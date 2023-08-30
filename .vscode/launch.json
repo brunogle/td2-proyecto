@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "(gdb) Launch Beyond Debugger",
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": "${workspaceFolder}/build/bin",
+            "console": "externalTerminal"
+        }
+    ]
+}

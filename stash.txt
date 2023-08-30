@@ -1,0 +1,51 @@
+/*
+
+
+void clear_moves(move_t * moves){
+    for(int i = 0; i < MAX_MOVES; i++){
+        moves[i].from = 0;
+        moves[i].to = 0;
+    }
+}
+
+
+int main(){
+
+
+    game_state_t state;
+
+    load_fen(&state, STARTFEN);
+
+    char str[100];
+
+    move_t moves[100];
+
+    while(1){
+        fgets(str, 100, stdin);
+
+        make_move(&state, str_to_move(str), 1);
+
+        display_board(state);
+
+        clear_moves(moves);
+        generate_moves(&state, moves);
+
+        int i = 0;
+        while(!(moves[i].from == 0 && moves[i].to == 0)){
+            char move_str[10];
+            move_to_str(moves[i], move_str);
+            printf(move_str);
+            printf("  ");
+            i++;
+        }
+        printf("\n");
+
+
+    }
+
+
+    getchar();
+
+    return 0;
+}
+*/

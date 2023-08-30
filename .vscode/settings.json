@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.h": "c",
+        "ostream": "cpp",
+        "stdint.h": "c",
+        "board.h": "c",
+        "stdio.h": "c",
+        "type_traits": "c"
+    }
+}
