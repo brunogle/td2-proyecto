@@ -118,11 +118,11 @@ CMakeFiles/engine_test.dir/src/game/engine/moves.c.o: /shared/brucloud/utn/td2/p
   /usr/lib/clang/16/include/stdint.h
 
 CMakeFiles/engine_test.dir/src/game/game.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.c \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.h \
   /usr/include/bits/libc-header-start.h \
@@ -202,32 +202,22 @@ CMakeFiles/engine_test.dir/src/game/movement.c.o: /shared/brucloud/utn/td2/proye
   /usr/lib/clang/16/include/stdint.h
 
 CMakeFiles/engine_test.dir/src/main.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/main.c \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.h
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.h
 
 CMakeFiles/engine_test.dir/src/pc/graphics.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/lib/p8g/p8g.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.h \
-  /usr/include/bits/floatn-common.h \
-  /usr/include/bits/floatn.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/long-double.h \
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-uintn.h \
-  /usr/include/bits/stdio_lim.h \
   /usr/include/bits/time64.h \
   /usr/include/bits/timesize.h \
   /usr/include/bits/types.h \
-  /usr/include/bits/types/FILE.h \
-  /usr/include/bits/types/__FILE.h \
-  /usr/include/bits/types/__fpos64_t.h \
-  /usr/include/bits/types/__fpos_t.h \
-  /usr/include/bits/types/__mbstate_t.h \
-  /usr/include/bits/types/cookie_io_functions_t.h \
-  /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wordsize.h \
@@ -235,14 +225,46 @@ CMakeFiles/engine_test.dir/src/pc/graphics.c.o: /shared/brucloud/utn/td2/proyect
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/inttypes.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
-  /usr/include/stdio.h \
   /usr/include/sys/cdefs.h \
-  /usr/lib/clang/16/include/stdarg.h \
-  /usr/lib/clang/16/include/stddef.h \
+  /usr/lib/clang/16/include/inttypes.h \
   /usr/lib/clang/16/include/stdint.h
 
+CMakeFiles/engine_test.dir/src/pc/pc.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.h \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/inttypes.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
+  /usr/include/sys/cdefs.h \
+  /usr/lib/clang/16/include/inttypes.h \
+  /usr/lib/clang/16/include/stdint.h
+
+
+/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c:
+
+/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.h:
 
 /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c:
 

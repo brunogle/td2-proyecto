@@ -1,5 +1,6 @@
-#include "pc/graphics.h"
+#include "pc/pc.h"
 
 int main(){
-    start_graphics();
+    pc_main();
 }
+

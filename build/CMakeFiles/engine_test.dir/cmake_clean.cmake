@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine_test.dir/src/main.c.o.d"
   "CMakeFiles/engine_test.dir/src/pc/graphics.c.o"
   "CMakeFiles/engine_test.dir/src/pc/graphics.c.o.d"
+  "CMakeFiles/engine_test.dir/src/pc/pc.c.o"
+  "CMakeFiles/engine_test.dir/src/pc/pc.c.o.d"
   "bin/engine_test"
   "bin/engine_test.pdb"
 )

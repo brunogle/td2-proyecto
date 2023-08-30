@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c" "CMakeFiles/engine_test.dir/src/game/movement.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/movement.c.o.d"
   "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/main.c" "CMakeFiles/engine_test.dir/src/main.c.o" "gcc" "CMakeFiles/engine_test.dir/src/main.c.o.d"
   "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c" "CMakeFiles/engine_test.dir/src/pc/graphics.c.o" "gcc" "CMakeFiles/engine_test.dir/src/pc/graphics.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c" "CMakeFiles/engine_test.dir/src/pc/pc.c.o" "gcc" "CMakeFiles/engine_test.dir/src/pc/pc.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

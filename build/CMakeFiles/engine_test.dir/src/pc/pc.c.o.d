@@ -1,5 +1,6 @@
-CMakeFiles/engine_test.dir/src/pc/graphics.c.o: \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c \
+CMakeFiles/engine_test.dir/src/pc/pc.c.o: \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c \
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.h \
   /usr/lib/clang/16/include/stdint.h /usr/include/stdint.h \
   /usr/include/bits/libc-header-start.h /usr/include/features.h \
@@ -15,4 +16,4 @@ CMakeFiles/engine_test.dir/src/pc/graphics.c.o: \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/../game/lighting/../engine/engine.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/../game/lighting/../engine/moves.h \
   /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/../game/lighting/../engine/board.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/../../lib/p8g/p8g.h
+  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/../game/game.h

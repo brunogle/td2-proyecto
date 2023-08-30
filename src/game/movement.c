@@ -47,10 +47,10 @@ char is_board_ok(){
 
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
-            if((sensor_state[rank] & (1 << file)) && get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
+            if((sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
                 board_ok = 0;
             }
-            else if(!(sensor_state[rank] & (1 << file)) && get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
+            else if(!(sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
                 board_ok = 0;
             }
         }
@@ -87,24 +87,24 @@ void movement_fsm(){
         if(piece_change.piece_action == REMOVED){
             movement_state = PIECE_LIFTED_STATE;
             square_lifted = piece_change.square_affected;
-            total_valid_moves = list_moves(valid_moves);
+            total_valid_moves = engine_list_moves(valid_moves);
             
             lifted_piece_valid_moves = get_lifted_moves(square_lifted, valid_moves, total_valid_moves);
 
             if(lifted_piece_valid_moves == 0){
                 movement_state = ERROR_STATE;
-                set_lighting_state(LIGHTING_ERROR_STATE);
+                lighting_set_state(LIGHTING_ERROR_STATE);
             }
             else{
                 movement_state = PIECE_LIFTED_STATE;
-                set_square_lifted(square_lifted);
+                lighting_piece_lifted_square(square_lifted);
                 set_valid_moves(valid_moves, total_valid_moves);
-                set_lighting_state(LIGHTING_LIFTED_STATE);                
+                lighting_set_state(LIGHTING_LIFTED_STATE);                
             }
         }
         else if(piece_change.piece_action == PLACED){
             movement_state = ERROR_STATE;
-            set_lighting_state(LIGHTING_ERROR_STATE);
+            lighting_set_state(LIGHTING_ERROR_STATE);
         }
         break;
     
@@ -113,20 +113,20 @@ void movement_fsm(){
             move_t move_played;
             move_played.from = square_lifted;
             move_played.to = piece_change.square_affected;
-            char move_ok = move_piece(move_played);
+            char move_ok = engine_move_piece(move_played);
 
             if(move_ok){
                 movement_state = WAIT_STATE;
-                set_lighting_state(LIGHTING_IDLE_STATE);
+                lighting_set_state(LIGHTING_IDLE_STATE);
             }
             else{
                 movement_state = ERROR_STATE;
-                set_lighting_state(LIGHTING_ERROR_STATE);
+                lighting_set_state(LIGHTING_ERROR_STATE);
             }
         }
         else if(piece_change.piece_action == REMOVED){
 
-            total_valid_moves = list_moves(valid_moves);
+            total_valid_moves = engine_list_moves(valid_moves);
 
             char captured_piece_is_valid = 0;
             for(int i = 0; i < total_valid_moves; i++){
@@ -138,7 +138,7 @@ void movement_fsm(){
 
             if(!captured_piece_is_valid){
                 movement_state = ERROR_STATE;
-                set_lighting_state(LIGHTING_ERROR_STATE);
+                lighting_set_state(LIGHTING_ERROR_STATE);
             }
         }
         
@@ -149,7 +149,7 @@ void movement_fsm(){
 
         if(board_ok){
             movement_state = WAIT_STATE;
-            set_lighting_state(LIGHTING_IDLE_STATE);
+            lighting_set_state(LIGHTING_IDLE_STATE);
         }
         break;
 

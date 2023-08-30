@@ -7,6 +7,12 @@
 },
 {
   "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/pc/pc.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c",
+  "output": "CMakeFiles/engine_test.dir/src/pc/pc.c.o"
+},
+{
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
   "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/pc/graphics.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c",
   "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c",
   "output": "CMakeFiles/engine_test.dir/src/pc/graphics.c.o"

@@ -34,6 +34,7 @@ target_sources(engine_test
     PRIVATE 
         src/main.c
 
+        src/pc/pc.c
         src/pc/graphics.c
 
         src/game/movement.c

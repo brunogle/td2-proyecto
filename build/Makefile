@@ -345,6 +345,30 @@ src/pc/graphics.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/graphics.c.s
 .PHONY : src/pc/graphics.c.s
 
+src/pc/pc.o: src/pc/pc.c.o
+.PHONY : src/pc/pc.o
+
+# target to build an object file
+src/pc/pc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/pc.c.o
+.PHONY : src/pc/pc.c.o
+
+src/pc/pc.i: src/pc/pc.c.i
+.PHONY : src/pc/pc.i
+
+# target to preprocess a source file
+src/pc/pc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/pc.c.i
+.PHONY : src/pc/pc.c.i
+
+src/pc/pc.s: src/pc/pc.c.s
+.PHONY : src/pc/pc.s
+
+# target to generate assembly for a file
+src/pc/pc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/pc.c.s
+.PHONY : src/pc/pc.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -381,6 +405,9 @@ help:
 	@echo "... src/pc/graphics.o"
 	@echo "... src/pc/graphics.i"
 	@echo "... src/pc/graphics.s"
+	@echo "... src/pc/pc.o"
+	@echo "... src/pc/pc.i"
+	@echo "... src/pc/pc.s"
 .PHONY : help
 
 

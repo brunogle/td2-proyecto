@@ -83,10 +83,24 @@ CMakeFiles/engine_test.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/engine_test.dir/src/main.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/main.c -o CMakeFiles/engine_test.dir/src/main.c.s
 
+CMakeFiles/engine_test.dir/src/pc/pc.c.o: CMakeFiles/engine_test.dir/flags.make
+CMakeFiles/engine_test.dir/src/pc/pc.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c
+CMakeFiles/engine_test.dir/src/pc/pc.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/engine_test.dir/src/pc/pc.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/pc/pc.c.o -MF CMakeFiles/engine_test.dir/src/pc/pc.c.o.d -o CMakeFiles/engine_test.dir/src/pc/pc.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c
+
+CMakeFiles/engine_test.dir/src/pc/pc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/engine_test.dir/src/pc/pc.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c > CMakeFiles/engine_test.dir/src/pc/pc.c.i
+
+CMakeFiles/engine_test.dir/src/pc/pc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/engine_test.dir/src/pc/pc.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/pc.c -o CMakeFiles/engine_test.dir/src/pc/pc.c.s
+
 CMakeFiles/engine_test.dir/src/pc/graphics.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/pc/graphics.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c
 CMakeFiles/engine_test.dir/src/pc/graphics.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/engine_test.dir/src/pc/graphics.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/engine_test.dir/src/pc/graphics.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/pc/graphics.c.o -MF CMakeFiles/engine_test.dir/src/pc/graphics.c.o.d -o CMakeFiles/engine_test.dir/src/pc/graphics.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c
 
 CMakeFiles/engine_test.dir/src/pc/graphics.c.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/engine_test.dir/src/pc/graphics.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/movement.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/movement.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c
 CMakeFiles/engine_test.dir/src/game/movement.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/engine_test.dir/src/game/movement.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/engine_test.dir/src/game/movement.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/movement.c.o -MF CMakeFiles/engine_test.dir/src/game/movement.c.o.d -o CMakeFiles/engine_test.dir/src/game/movement.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c
 
 CMakeFiles/engine_test.dir/src/game/movement.c.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/engine_test.dir/src/game/movement.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/game.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/game.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.c
 CMakeFiles/engine_test.dir/src/game/game.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/engine_test.dir/src/game/game.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/engine_test.dir/src/game/game.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/game.c.o -MF CMakeFiles/engine_test.dir/src/game/game.c.o.d -o CMakeFiles/engine_test.dir/src/game/game.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.c
 
 CMakeFiles/engine_test.dir/src/game/game.c.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/engine_test.dir/src/game/game.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/engine/board.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/engine/board.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.c
 CMakeFiles/engine_test.dir/src/game/engine/board.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/engine_test.dir/src/game/engine/board.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/engine_test.dir/src/game/engine/board.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/engine/board.c.o -MF CMakeFiles/engine_test.dir/src/game/engine/board.c.o.d -o CMakeFiles/engine_test.dir/src/game/engine/board.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.c
 
 CMakeFiles/engine_test.dir/src/game/engine/board.c.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/engine_test.dir/src/game/engine/board.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/engine/interface.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/engine/interface.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/interface.c
 CMakeFiles/engine_test.dir/src/game/engine/interface.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/engine_test.dir/src/game/engine/interface.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/engine_test.dir/src/game/engine/interface.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/engine/interface.c.o -MF CMakeFiles/engine_test.dir/src/game/engine/interface.c.o.d -o CMakeFiles/engine_test.dir/src/game/engine/interface.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/interface.c
 
 CMakeFiles/engine_test.dir/src/game/engine/interface.c.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/engine_test.dir/src/game/engine/interface.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/engine/moves.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/engine/moves.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.c
 CMakeFiles/engine_test.dir/src/game/engine/moves.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/engine_test.dir/src/game/engine/moves.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/engine_test.dir/src/game/engine/moves.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/engine/moves.c.o -MF CMakeFiles/engine_test.dir/src/game/engine/moves.c.o.d -o CMakeFiles/engine_test.dir/src/game/engine/moves.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.c
 
 CMakeFiles/engine_test.dir/src/game/engine/moves.c.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/engine_test.dir/src/game/engine/moves.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/engine/engine.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/engine/engine.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.c
 CMakeFiles/engine_test.dir/src/game/engine/engine.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/engine_test.dir/src/game/engine/engine.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/engine_test.dir/src/game/engine/engine.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/engine/engine.c.o -MF CMakeFiles/engine_test.dir/src/game/engine/engine.c.o.d -o CMakeFiles/engine_test.dir/src/game/engine/engine.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.c
 
 CMakeFiles/engine_test.dir/src/game/engine/engine.c.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/engine_test.dir/src/game/engine/engine.c.s: cmake_force
 CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o: CMakeFiles/engine_test.dir/flags.make
 CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.c
 CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o: CMakeFiles/engine_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o -MF CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o.d -o CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.c
 
 CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.i: cmake_force
@@ -198,6 +212,7 @@ CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.s: cmake_force
 # Object files for target engine_test
 engine_test_OBJECTS = \
 "CMakeFiles/engine_test.dir/src/main.c.o" \
+"CMakeFiles/engine_test.dir/src/pc/pc.c.o" \
 "CMakeFiles/engine_test.dir/src/pc/graphics.c.o" \
 "CMakeFiles/engine_test.dir/src/game/movement.c.o" \
 "CMakeFiles/engine_test.dir/src/game/game.c.o" \
@@ -211,6 +226,7 @@ engine_test_OBJECTS = \
 engine_test_EXTERNAL_OBJECTS =
 
 bin/engine_test: CMakeFiles/engine_test.dir/src/main.c.o
+bin/engine_test: CMakeFiles/engine_test.dir/src/pc/pc.c.o
 bin/engine_test: CMakeFiles/engine_test.dir/src/pc/graphics.c.o
 bin/engine_test: CMakeFiles/engine_test.dir/src/game/movement.c.o
 bin/engine_test: CMakeFiles/engine_test.dir/src/game/game.c.o
@@ -221,7 +237,7 @@ bin/engine_test: CMakeFiles/engine_test.dir/src/game/engine/engine.c.o
 bin/engine_test: CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o
 bin/engine_test: CMakeFiles/engine_test.dir/build.make
 bin/engine_test: CMakeFiles/engine_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable bin/engine_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable bin/engine_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

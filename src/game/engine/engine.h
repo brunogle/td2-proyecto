@@ -14,21 +14,21 @@ Solo se deben llamar funciones de este header de afuera de la carpeta "engine"
 /*
 Reinicia el estado del tablero
 */
-void reset_game();
+void engine_reset();
 
 /*
 Aplica un movimiento
 */
-char move_piece(move_t move);
+char engine_move_piece(move_t move);
 
 /*
 Devuelve todos los movimientos LEGALES atravez del array "moves".
 TODO: Hacer que solo devuelva los legales
 */
-int list_moves(move_t * moves);
+int engine_list_moves(move_t * moves);
 
 
-char get_piece(uint8_t square);
+char engine_get_piece(uint8_t square);
 
 #endif
 
