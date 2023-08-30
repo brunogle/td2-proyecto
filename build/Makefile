@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /shared/brucloud/utn/td2/proyecto/soft/engine_pc
+CMAKE_SOURCE_DIR = /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /shared/brucloud/utn/td2/proyecto/soft/engine_pc/build
+CMAKE_BINARY_DIR = /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /shared/brucloud/utn/td2/proyecto/soft/engine_pc/build/CMakeFiles /shared/brucloud/utn/td2/proyecto/soft/engine_pc/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /shared/brucloud/utn/td2/proyecto/soft/engine_pc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,149 +129,173 @@ engine_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/build
 .PHONY : engine_test/fast
 
-src/engine/board.o: src/engine/board.c.o
-.PHONY : src/engine/board.o
+src/game/engine/board.o: src/game/engine/board.c.o
+.PHONY : src/game/engine/board.o
 
 # target to build an object file
-src/engine/board.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/board.c.o
-.PHONY : src/engine/board.c.o
+src/game/engine/board.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/board.c.o
+.PHONY : src/game/engine/board.c.o
 
-src/engine/board.i: src/engine/board.c.i
-.PHONY : src/engine/board.i
+src/game/engine/board.i: src/game/engine/board.c.i
+.PHONY : src/game/engine/board.i
 
 # target to preprocess a source file
-src/engine/board.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/board.c.i
-.PHONY : src/engine/board.c.i
+src/game/engine/board.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/board.c.i
+.PHONY : src/game/engine/board.c.i
 
-src/engine/board.s: src/engine/board.c.s
-.PHONY : src/engine/board.s
+src/game/engine/board.s: src/game/engine/board.c.s
+.PHONY : src/game/engine/board.s
 
 # target to generate assembly for a file
-src/engine/board.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/board.c.s
-.PHONY : src/engine/board.c.s
+src/game/engine/board.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/board.c.s
+.PHONY : src/game/engine/board.c.s
 
-src/engine/engine.o: src/engine/engine.c.o
-.PHONY : src/engine/engine.o
+src/game/engine/engine.o: src/game/engine/engine.c.o
+.PHONY : src/game/engine/engine.o
 
 # target to build an object file
-src/engine/engine.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/engine.c.o
-.PHONY : src/engine/engine.c.o
+src/game/engine/engine.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/engine.c.o
+.PHONY : src/game/engine/engine.c.o
 
-src/engine/engine.i: src/engine/engine.c.i
-.PHONY : src/engine/engine.i
+src/game/engine/engine.i: src/game/engine/engine.c.i
+.PHONY : src/game/engine/engine.i
 
 # target to preprocess a source file
-src/engine/engine.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/engine.c.i
-.PHONY : src/engine/engine.c.i
+src/game/engine/engine.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/engine.c.i
+.PHONY : src/game/engine/engine.c.i
 
-src/engine/engine.s: src/engine/engine.c.s
-.PHONY : src/engine/engine.s
+src/game/engine/engine.s: src/game/engine/engine.c.s
+.PHONY : src/game/engine/engine.s
 
 # target to generate assembly for a file
-src/engine/engine.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/engine.c.s
-.PHONY : src/engine/engine.c.s
+src/game/engine/engine.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/engine.c.s
+.PHONY : src/game/engine/engine.c.s
 
-src/engine/interface.o: src/engine/interface.c.o
-.PHONY : src/engine/interface.o
+src/game/engine/interface.o: src/game/engine/interface.c.o
+.PHONY : src/game/engine/interface.o
 
 # target to build an object file
-src/engine/interface.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/interface.c.o
-.PHONY : src/engine/interface.c.o
+src/game/engine/interface.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/interface.c.o
+.PHONY : src/game/engine/interface.c.o
 
-src/engine/interface.i: src/engine/interface.c.i
-.PHONY : src/engine/interface.i
+src/game/engine/interface.i: src/game/engine/interface.c.i
+.PHONY : src/game/engine/interface.i
 
 # target to preprocess a source file
-src/engine/interface.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/interface.c.i
-.PHONY : src/engine/interface.c.i
+src/game/engine/interface.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/interface.c.i
+.PHONY : src/game/engine/interface.c.i
 
-src/engine/interface.s: src/engine/interface.c.s
-.PHONY : src/engine/interface.s
+src/game/engine/interface.s: src/game/engine/interface.c.s
+.PHONY : src/game/engine/interface.s
 
 # target to generate assembly for a file
-src/engine/interface.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/interface.c.s
-.PHONY : src/engine/interface.c.s
+src/game/engine/interface.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/interface.c.s
+.PHONY : src/game/engine/interface.c.s
 
-src/engine/moves.o: src/engine/moves.c.o
-.PHONY : src/engine/moves.o
+src/game/engine/moves.o: src/game/engine/moves.c.o
+.PHONY : src/game/engine/moves.o
 
 # target to build an object file
-src/engine/moves.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/moves.c.o
-.PHONY : src/engine/moves.c.o
+src/game/engine/moves.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/moves.c.o
+.PHONY : src/game/engine/moves.c.o
 
-src/engine/moves.i: src/engine/moves.c.i
-.PHONY : src/engine/moves.i
+src/game/engine/moves.i: src/game/engine/moves.c.i
+.PHONY : src/game/engine/moves.i
 
 # target to preprocess a source file
-src/engine/moves.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/moves.c.i
-.PHONY : src/engine/moves.c.i
+src/game/engine/moves.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/moves.c.i
+.PHONY : src/game/engine/moves.c.i
 
-src/engine/moves.s: src/engine/moves.c.s
-.PHONY : src/engine/moves.s
+src/game/engine/moves.s: src/game/engine/moves.c.s
+.PHONY : src/game/engine/moves.s
 
 # target to generate assembly for a file
-src/engine/moves.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/engine/moves.c.s
-.PHONY : src/engine/moves.c.s
+src/game/engine/moves.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/engine/moves.c.s
+.PHONY : src/game/engine/moves.c.s
 
-src/graphics.o: src/graphics.c.o
-.PHONY : src/graphics.o
+src/game/game.o: src/game/game.c.o
+.PHONY : src/game/game.o
 
 # target to build an object file
-src/graphics.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/graphics.c.o
-.PHONY : src/graphics.c.o
+src/game/game.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/game.c.o
+.PHONY : src/game/game.c.o
 
-src/graphics.i: src/graphics.c.i
-.PHONY : src/graphics.i
+src/game/game.i: src/game/game.c.i
+.PHONY : src/game/game.i
 
 # target to preprocess a source file
-src/graphics.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/graphics.c.i
-.PHONY : src/graphics.c.i
+src/game/game.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/game.c.i
+.PHONY : src/game/game.c.i
 
-src/graphics.s: src/graphics.c.s
-.PHONY : src/graphics.s
+src/game/game.s: src/game/game.c.s
+.PHONY : src/game/game.s
 
 # target to generate assembly for a file
-src/graphics.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/graphics.c.s
-.PHONY : src/graphics.c.s
+src/game/game.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/game.c.s
+.PHONY : src/game/game.c.s
 
-src/lighting/lighting.o: src/lighting/lighting.c.o
-.PHONY : src/lighting/lighting.o
+src/game/lighting/lighting.o: src/game/lighting/lighting.c.o
+.PHONY : src/game/lighting/lighting.o
 
 # target to build an object file
-src/lighting/lighting.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/lighting/lighting.c.o
-.PHONY : src/lighting/lighting.c.o
+src/game/lighting/lighting.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o
+.PHONY : src/game/lighting/lighting.c.o
 
-src/lighting/lighting.i: src/lighting/lighting.c.i
-.PHONY : src/lighting/lighting.i
+src/game/lighting/lighting.i: src/game/lighting/lighting.c.i
+.PHONY : src/game/lighting/lighting.i
 
 # target to preprocess a source file
-src/lighting/lighting.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/lighting/lighting.c.i
-.PHONY : src/lighting/lighting.c.i
+src/game/lighting/lighting.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.i
+.PHONY : src/game/lighting/lighting.c.i
 
-src/lighting/lighting.s: src/lighting/lighting.c.s
-.PHONY : src/lighting/lighting.s
+src/game/lighting/lighting.s: src/game/lighting/lighting.c.s
+.PHONY : src/game/lighting/lighting.s
 
 # target to generate assembly for a file
-src/lighting/lighting.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/lighting/lighting.c.s
-.PHONY : src/lighting/lighting.c.s
+src/game/lighting/lighting.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.s
+.PHONY : src/game/lighting/lighting.c.s
+
+src/game/movement.o: src/game/movement.c.o
+.PHONY : src/game/movement.o
+
+# target to build an object file
+src/game/movement.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/movement.c.o
+.PHONY : src/game/movement.c.o
+
+src/game/movement.i: src/game/movement.c.i
+.PHONY : src/game/movement.i
+
+# target to preprocess a source file
+src/game/movement.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/movement.c.i
+.PHONY : src/game/movement.c.i
+
+src/game/movement.s: src/game/movement.c.s
+.PHONY : src/game/movement.s
+
+# target to generate assembly for a file
+src/game/movement.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/game/movement.c.s
+.PHONY : src/game/movement.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -297,53 +321,29 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/movement.o: src/movement.c.o
-.PHONY : src/movement.o
+src/pc/graphics.o: src/pc/graphics.c.o
+.PHONY : src/pc/graphics.o
 
 # target to build an object file
-src/movement.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/movement.c.o
-.PHONY : src/movement.c.o
+src/pc/graphics.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/graphics.c.o
+.PHONY : src/pc/graphics.c.o
 
-src/movement.i: src/movement.c.i
-.PHONY : src/movement.i
-
-# target to preprocess a source file
-src/movement.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/movement.c.i
-.PHONY : src/movement.c.i
-
-src/movement.s: src/movement.c.s
-.PHONY : src/movement.s
-
-# target to generate assembly for a file
-src/movement.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/movement.c.s
-.PHONY : src/movement.c.s
-
-src/sensors/sensors.o: src/sensors/sensors.c.o
-.PHONY : src/sensors/sensors.o
-
-# target to build an object file
-src/sensors/sensors.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/sensors/sensors.c.o
-.PHONY : src/sensors/sensors.c.o
-
-src/sensors/sensors.i: src/sensors/sensors.c.i
-.PHONY : src/sensors/sensors.i
+src/pc/graphics.i: src/pc/graphics.c.i
+.PHONY : src/pc/graphics.i
 
 # target to preprocess a source file
-src/sensors/sensors.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/sensors/sensors.c.i
-.PHONY : src/sensors/sensors.c.i
+src/pc/graphics.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/graphics.c.i
+.PHONY : src/pc/graphics.c.i
 
-src/sensors/sensors.s: src/sensors/sensors.c.s
-.PHONY : src/sensors/sensors.s
+src/pc/graphics.s: src/pc/graphics.c.s
+.PHONY : src/pc/graphics.s
 
 # target to generate assembly for a file
-src/sensors/sensors.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/sensors/sensors.c.s
-.PHONY : src/sensors/sensors.c.s
+src/pc/graphics.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine_test.dir/build.make CMakeFiles/engine_test.dir/src/pc/graphics.c.s
+.PHONY : src/pc/graphics.c.s
 
 # Help Target
 help:
@@ -354,33 +354,33 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... engine_test"
-	@echo "... src/engine/board.o"
-	@echo "... src/engine/board.i"
-	@echo "... src/engine/board.s"
-	@echo "... src/engine/engine.o"
-	@echo "... src/engine/engine.i"
-	@echo "... src/engine/engine.s"
-	@echo "... src/engine/interface.o"
-	@echo "... src/engine/interface.i"
-	@echo "... src/engine/interface.s"
-	@echo "... src/engine/moves.o"
-	@echo "... src/engine/moves.i"
-	@echo "... src/engine/moves.s"
-	@echo "... src/graphics.o"
-	@echo "... src/graphics.i"
-	@echo "... src/graphics.s"
-	@echo "... src/lighting/lighting.o"
-	@echo "... src/lighting/lighting.i"
-	@echo "... src/lighting/lighting.s"
+	@echo "... src/game/engine/board.o"
+	@echo "... src/game/engine/board.i"
+	@echo "... src/game/engine/board.s"
+	@echo "... src/game/engine/engine.o"
+	@echo "... src/game/engine/engine.i"
+	@echo "... src/game/engine/engine.s"
+	@echo "... src/game/engine/interface.o"
+	@echo "... src/game/engine/interface.i"
+	@echo "... src/game/engine/interface.s"
+	@echo "... src/game/engine/moves.o"
+	@echo "... src/game/engine/moves.i"
+	@echo "... src/game/engine/moves.s"
+	@echo "... src/game/game.o"
+	@echo "... src/game/game.i"
+	@echo "... src/game/game.s"
+	@echo "... src/game/lighting/lighting.o"
+	@echo "... src/game/lighting/lighting.i"
+	@echo "... src/game/lighting/lighting.s"
+	@echo "... src/game/movement.o"
+	@echo "... src/game/movement.i"
+	@echo "... src/game/movement.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/movement.o"
-	@echo "... src/movement.i"
-	@echo "... src/movement.s"
-	@echo "... src/sensors/sensors.o"
-	@echo "... src/sensors/sensors.i"
-	@echo "... src/sensors/sensors.s"
+	@echo "... src/pc/graphics.o"
+	@echo "... src/pc/graphics.i"
+	@echo "... src/pc/graphics.s"
 .PHONY : help
 
 

@@ -5,7 +5,7 @@ set(MINGW32_DIRECTORY "C:\\Portable\\mingw64") #For windows compilation
 project(engine_test C)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers")
+set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS}") # -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers")
 set(CMAKE_EXE_LINKER_FLAGS "-pg")
 
 
@@ -33,16 +33,16 @@ ENDIF()
 target_sources(engine_test
     PRIVATE 
         src/main.c
-        src/graphics.c
-        src/movement.c
 
-        src/engine/board.c
-        src/engine/interface.c
-        src/engine/moves.c
-        src/engine/board.c
-        src/engine/engine.c
+        src/pc/graphics.c
 
-        src/lighting/lighting.c
-
-        src/sensors/sensors.c
+        src/game/movement.c
+        src/game/game.c
+        
+        src/game/engine/board.c
+        src/game/engine/interface.c
+        src/game/engine/moves.c
+        src/game/engine/board.c
+        src/game/engine/engine.c
+        src/game/lighting/lighting.c
 )

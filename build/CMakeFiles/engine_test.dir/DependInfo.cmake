@@ -8,15 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/board.c" "CMakeFiles/engine_test.dir/src/engine/board.c.o" "gcc" "CMakeFiles/engine_test.dir/src/engine/board.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/engine.c" "CMakeFiles/engine_test.dir/src/engine/engine.c.o" "gcc" "CMakeFiles/engine_test.dir/src/engine/engine.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/interface.c" "CMakeFiles/engine_test.dir/src/engine/interface.c.o" "gcc" "CMakeFiles/engine_test.dir/src/engine/interface.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/moves.c" "CMakeFiles/engine_test.dir/src/engine/moves.c.o" "gcc" "CMakeFiles/engine_test.dir/src/engine/moves.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/graphics.c" "CMakeFiles/engine_test.dir/src/graphics.c.o" "gcc" "CMakeFiles/engine_test.dir/src/graphics.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/lighting/lighting.c" "CMakeFiles/engine_test.dir/src/lighting/lighting.c.o" "gcc" "CMakeFiles/engine_test.dir/src/lighting/lighting.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/main.c" "CMakeFiles/engine_test.dir/src/main.c.o" "gcc" "CMakeFiles/engine_test.dir/src/main.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/movement.c" "CMakeFiles/engine_test.dir/src/movement.c.o" "gcc" "CMakeFiles/engine_test.dir/src/movement.c.o.d"
-  "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/sensors/sensors.c" "CMakeFiles/engine_test.dir/src/sensors/sensors.c.o" "gcc" "CMakeFiles/engine_test.dir/src/sensors/sensors.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.c" "CMakeFiles/engine_test.dir/src/game/engine/board.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/engine/board.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.c" "CMakeFiles/engine_test.dir/src/game/engine/engine.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/engine/engine.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/interface.c" "CMakeFiles/engine_test.dir/src/game/engine/interface.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/engine/interface.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.c" "CMakeFiles/engine_test.dir/src/game/engine/moves.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/engine/moves.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.c" "CMakeFiles/engine_test.dir/src/game/game.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/game.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.c" "CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c" "CMakeFiles/engine_test.dir/src/game/movement.c.o" "gcc" "CMakeFiles/engine_test.dir/src/game/movement.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/main.c" "CMakeFiles/engine_test.dir/src/main.c.o" "gcc" "CMakeFiles/engine_test.dir/src/main.c.o.d"
+  "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c" "CMakeFiles/engine_test.dir/src/pc/graphics.c.o" "gcc" "CMakeFiles/engine_test.dir/src/pc/graphics.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,4 +1,4 @@
-# Install script for directory: /shared/brucloud/utn/td2/proyecto/soft/engine_pc
+# Install script for directory: /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

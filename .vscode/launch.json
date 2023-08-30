@@ -7,7 +7,7 @@
             "name": "(gdb) Launch Beyond Debugger",
             "program": "${command:cmake.launchTargetPath}",
             "cwd": "${workspaceFolder}/build/bin",
-            "console": "externalTerminal"
+            "console": "integratedTerminal"
         }
     ]
 }

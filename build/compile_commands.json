@@ -1,56 +1,56 @@
 [
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/main.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/main.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/main.c",
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/main.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/main.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/main.c",
   "output": "CMakeFiles/engine_test.dir/src/main.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/graphics.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/graphics.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/graphics.c",
-  "output": "CMakeFiles/engine_test.dir/src/graphics.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/pc/graphics.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/pc/graphics.c",
+  "output": "CMakeFiles/engine_test.dir/src/pc/graphics.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/movement.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/movement.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/movement.c",
-  "output": "CMakeFiles/engine_test.dir/src/movement.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/movement.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/movement.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/movement.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/engine/board.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/board.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/board.c",
-  "output": "CMakeFiles/engine_test.dir/src/engine/board.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/game.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/game.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/game.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/engine/interface.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/interface.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/interface.c",
-  "output": "CMakeFiles/engine_test.dir/src/engine/interface.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/engine/board.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/board.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/engine/board.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/engine/moves.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/moves.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/moves.c",
-  "output": "CMakeFiles/engine_test.dir/src/engine/moves.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/engine/interface.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/interface.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/interface.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/engine/interface.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/engine/engine.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/engine.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/engine/engine.c",
-  "output": "CMakeFiles/engine_test.dir/src/engine/engine.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/engine/moves.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/moves.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/engine/moves.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/lighting/lighting.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/lighting/lighting.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/lighting/lighting.c",
-  "output": "CMakeFiles/engine_test.dir/src/lighting/lighting.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/engine/engine.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/engine/engine.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/engine/engine.c.o"
 },
 {
-  "directory": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/build",
-  "command": "/usr/bin/gcc    -Wall -Wextra -Wpedantic  -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers -g -o CMakeFiles/engine_test.dir/src/sensors/sensors.c.o -c /shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/sensors/sensors.c",
-  "file": "/shared/brucloud/utn/td2/proyecto/soft/engine_pc/src/sensors/sensors.c",
-  "output": "CMakeFiles/engine_test.dir/src/sensors/sensors.c.o"
+  "directory": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/build",
+  "command": "/usr/bin/clang   -g -o CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o -c /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.c",
+  "file": "/shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o"
 }
 ]
