@@ -1,17 +1,24 @@
 CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o: \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.c \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/lighting.h \
-  /usr/lib/clang/16/include/inttypes.h /usr/include/inttypes.h \
-  /usr/include/features.h /usr/include/features-time64.h \
-  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
-  /usr/include/stdc-predef.h /usr/include/sys/cdefs.h \
-  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
-  /usr/include/gnu/stubs-64.h /usr/lib/clang/16/include/stdint.h \
-  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
-  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
-  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
-  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/../engine/engine.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/../engine/moves.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/../engine/board.h \
-  /shared/brucloud/utn/td2/proyecto/soft/td2-proyecto/src/game/lighting/../movement.h
+ /home/zuri/td2/td2-proyecto/src/game/lighting/lighting.c \
+ /usr/include/stdc-predef.h \
+ /home/zuri/td2/td2-proyecto/src/game/lighting/lighting.h \
+ /usr/include/inttypes.h /usr/include/features.h \
+ /usr/include/features-time64.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/bits/timesize.h \
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/long-double.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+ /usr/include/x86_64-linux-gnu/bits/time64.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /home/zuri/td2/td2-proyecto/src/game/lighting/../engine/engine.h \
+ /home/zuri/td2/td2-proyecto/src/game/lighting/../engine/moves.h \
+ /home/zuri/td2/td2-proyecto/src/game/lighting/../engine/board.h \
+ /home/zuri/td2/td2-proyecto/src/game/lighting/../movement.h

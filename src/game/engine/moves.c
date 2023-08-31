@@ -79,13 +79,16 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_N;
                         n_moves++;
-                        if(SQ2ROW(square) == ROW_2){//Peon blanco sin mover
+                        if(SQ2ROW(square) == ROW_2 && state->pieces[square + DIR_NN] == PIECE_EMPTY){//Peon blanco sin mover con lugar vacio
                             moves[n_moves].from = square;
                             moves[n_moves].to = square + DIR_NN;   
                             n_moves++;
                         }
                     }
                 }
+                /*
+                    Capturas de peon blanco
+                */
                 if(IS_VALID(square + DIR_NE)){
                     if(state->color[square + DIR_NE] == BLACK){
                         moves[n_moves].from = square;
@@ -107,11 +110,28 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_S;
                         n_moves++;
-                        if(SQ2ROW(square) == ROW_7){ //Peon negro sin mover
+                        if(SQ2ROW(square) == ROW_7 && state->pieces[square + DIR_SS] == PIECE_EMPTY){ //Peon negro sin mover
                             moves[n_moves].from = square;
                             moves[n_moves].to = square + DIR_SS;
                             n_moves++;                    
                         }
+                    }
+                }
+                /*
+                    Capturas de peon negro
+                */
+                if(IS_VALID(square + DIR_SE)){
+                    if(state->color[square + DIR_SE] == WHITE){
+                        moves[n_moves].from = square;
+                        moves[n_moves].to = square + DIR_SE;
+                        n_moves++;    
+                    }
+                }
+                if(IS_VALID(square + DIR_SW)){
+                    if(state->color[square + DIR_SW] == WHITE){
+                        moves[n_moves].from = square;
+                        moves[n_moves].to = square + DIR_SW;
+                        n_moves++;    
                     }
                 }
             }
