@@ -132,6 +132,8 @@ void movement_fsm(){
             for(int i = 0; i < total_valid_moves; i++){
                 if(valid_moves[i].from == square_lifted && valid_moves[i].to == piece_change.square_affected){
                     captured_piece_is_valid = 1;
+                    lighting_piece_lifted_square(square_lifted);
+                    lighting_set_state(LIGHTING_CAPTURE_STATE); 
                     break;
                 }
             }

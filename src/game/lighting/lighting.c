@@ -78,6 +78,29 @@ char paint_differences(){
     return board_ok;
 }
 
+//Pinta discrepancias entre el estado en memoria del tablero y la captura esperada
+char paint_capture(int _rank, int _file){
+    char sensor_state[8];
+    get_sensors(sensor_state);
+    char board_ok = 1;
+
+    for (int rank = 0; rank < 8; rank++) {
+        for (int file = 0; file < 8; file++) {
+            if(_rank == rank && _file == file)
+                continue;
+            if((sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
+                set_color(rank, file, MISSING_ID);
+                board_ok = 0;
+            }
+            else if(!(sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
+                set_color(rank, file, INVALID_ID);
+                board_ok = 0;
+            }
+        }
+    }
+    return board_ok;
+}
+
 uint8_t square_lifted_lighting;
 move_t * valid_moves_lighting;
 int total_valid_moves_lighting;
@@ -110,6 +133,11 @@ void lighting_refresh(){
         case LIGHTING_ERROR_STATE:
             paint_board();
             paint_differences();
+        break;
+
+        case LIGHTING_CAPTURE_STATE:
+            paint_board();
+            paint_capture(SQ2ROW(square_lifted_lighting), SQ2COL(square_lifted_lighting));
         break;
     }
 }

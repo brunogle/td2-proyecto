@@ -7,6 +7,7 @@
 #define LIGHTING_IDLE_STATE 0
 #define LIGHTING_LIFTED_STATE 1
 #define LIGHTING_ERROR_STATE 2
+#define LIGHTING_CAPTURE_STATE 3
 
 typedef struct{
     uint8_t r;
