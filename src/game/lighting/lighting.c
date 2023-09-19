@@ -79,26 +79,9 @@ char paint_differences(){
 }
 
 //Pinta discrepancias entre el estado en memoria del tablero y la captura esperada
-char paint_capture(int _rank, int _file){
-    char sensor_state[8];
-    get_sensors(sensor_state);
-    char board_ok = 1;
-
-    for (int rank = 0; rank < 8; rank++) {
-        for (int file = 0; file < 8; file++) {
-            if(_rank == rank && _file == file)
-                continue;
-            if((sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
-                set_color(rank, file, MISSING_ID);
-                board_ok = 0;
-            }
-            else if(!(sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
-                set_color(rank, file, INVALID_ID);
-                board_ok = 0;
-            }
-        }
-    }
-    return board_ok;
+char paint_capture(int rank, int file){
+    set_color(rank, file, VALID_ID);
+    return 1;
 }
 
 uint8_t square_lifted_lighting;
