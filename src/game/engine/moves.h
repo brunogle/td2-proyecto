@@ -30,4 +30,6 @@ int make_move(game_state_t * state, move_t move, uint8_t safe);
 
 int generate_moves(game_state_t * state, move_t * moves);
 
+piece_t check_promotion();
+
 #endif

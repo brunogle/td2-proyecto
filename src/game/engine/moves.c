@@ -45,9 +45,26 @@ int make_move(game_state_t * state, move_t move, uint8_t safe){
     if(state->pieces[move.to] != PIECE_EMPTY)   
         remove_piece(state, move.to);
 
-    place_piece(state, state->pieces[move.from], state->color[move.from], move.to);
+    if(move.promotion != 0)
+    {
+        place_piece(state, check_promotion(), state->color[move.from], move.to);
+    }
+    else
+    {
+        place_piece(state, state->pieces[move.from], state->color[move.from], move.to);
+    }
+
     remove_piece(state, move.from);
     return 1;
+}
+
+/*
+    Devuelve la pieza seleccionada para promoción.
+    TODO: Hacer algun tipo de selector de piaza
+*/
+piece_t check_promotion()
+{
+    return QUEEN;
 }
 
 /*
@@ -78,6 +95,8 @@ int generate_moves(game_state_t * state, move_t * moves){
                     if(state->pieces[square + DIR_N] == PIECE_EMPTY){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_N;
+                        if(SQ2ROW(moves[n_moves].to) == ROW_8)
+                            moves[n_moves].promotion = 1;
                         n_moves++;
                         if(SQ2ROW(square) == ROW_2 && state->pieces[square + DIR_NN] == PIECE_EMPTY){//Peon blanco sin mover con lugar vacio
                             moves[n_moves].from = square;
@@ -93,6 +112,8 @@ int generate_moves(game_state_t * state, move_t * moves){
                     if(state->color[square + DIR_NE] == BLACK){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_NE;
+                        if(SQ2ROW(moves[n_moves].to) == ROW_8)
+                            moves[n_moves].promotion = 1;
                         n_moves++;    
                     }
                 }
@@ -100,6 +121,8 @@ int generate_moves(game_state_t * state, move_t * moves){
                     if(state->color[square + DIR_NW] == BLACK){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_NW;
+                        if(SQ2ROW(moves[n_moves].to) == ROW_8)
+                            moves[n_moves].promotion = 1;
                         n_moves++;    
                     }
                 }
@@ -109,6 +132,8 @@ int generate_moves(game_state_t * state, move_t * moves){
                     if(state->pieces[square + DIR_S] == PIECE_EMPTY){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_S;
+                        if(SQ2ROW(moves[n_moves].to) == ROW_1)
+                            moves[n_moves].promotion = 1;
                         n_moves++;
                         if(SQ2ROW(square) == ROW_7 && state->pieces[square + DIR_SS] == PIECE_EMPTY){ //Peon negro sin mover
                             moves[n_moves].from = square;
@@ -124,6 +149,8 @@ int generate_moves(game_state_t * state, move_t * moves){
                     if(state->color[square + DIR_SE] == WHITE){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_SE;
+                        if(SQ2ROW(moves[n_moves].to) == ROW_1)
+                            moves[n_moves].promotion = 1;
                         n_moves++;    
                     }
                 }
@@ -131,6 +158,8 @@ int generate_moves(game_state_t * state, move_t * moves){
                     if(state->color[square + DIR_SW] == WHITE){
                         moves[n_moves].from = square;
                         moves[n_moves].to = square + DIR_SW;
+                        if(SQ2ROW(moves[n_moves].to) == ROW_1)
+                            moves[n_moves].promotion = 1;
                         n_moves++;    
                     }
                 }

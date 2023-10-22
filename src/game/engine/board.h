@@ -87,10 +87,13 @@ typedef struct game_state{
 Estructura para representar movimientos
 "from" y "to" en 0 representa movimiento no valido. Esto
 es retornado por funciones que retornan move_t
+
+Cuando el miembro promotion es distinto de 0 significa que el movimiento requiere una selección de promoción
 */
 typedef struct move{
     uint8_t from;
     uint8_t to;
+    uint8_t promotion;
 } move_t;
 
 
