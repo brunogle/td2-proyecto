@@ -1,5 +1,6 @@
 #include "moves.h"
 #include "board.h"
+#include "../../pc/pc.h"
 
 
 /*
@@ -60,11 +61,10 @@ int make_move(game_state_t * state, move_t move, uint8_t safe){
 
 /*
     Devuelve la pieza seleccionada para promoción.
-    TODO: Hacer algun tipo de selector de piaza
 */
 piece_t check_promotion()
 {
-    return QUEEN;
+    return get_promotion();
 }
 
 /*

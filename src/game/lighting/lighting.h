@@ -1,7 +1,7 @@
 #ifndef LIGHTING_H
 #define LIGHTING_H
 
-#include <inttypes.h>
+#include <stdint.h>
 #include "../engine/engine.h"
 
 #define LIGHTING_IDLE_STATE 0

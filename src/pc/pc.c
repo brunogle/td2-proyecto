@@ -2,7 +2,7 @@
 #include "graphics.h"
 #include "../game/game.h"
 
-
+#include <stdio.h>
 
 void pc_main(){
 
@@ -26,4 +26,19 @@ void draw() {
     game_fsm(); //Ejecuto una vuelta del FSM del juego
 
     graphics_draw_all(); //Actualizo los graficos en el tablero
+}
+
+piece_t get_promotion()
+{
+    printf("Ingrese numero de pieza para seleccionar la promocion:\n");
+    printf("Caballo: %d\n", KNIGHT);
+    printf("Alfil: %d\n", BISHOP);
+    printf("Reina: %d\n", QUEEN);
+
+    unsigned int prom;
+
+    printf("Seleccion: ");
+    scanf("%u", &prom);
+    
+    return (piece_t) prom;
 }
