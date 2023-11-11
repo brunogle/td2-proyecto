@@ -1,0 +1,4 @@
+../Core/Src/engine/engine.c:8:6:engine_reset	8	static
+../Core/Src/engine/engine.c:12:6:engine_move_piece	16	static
+../Core/Src/engine/engine.c:16:5:engine_list_moves	16	static
+../Core/Src/engine/engine.c:20:6:engine_get_piece	16	static

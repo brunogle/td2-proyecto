@@ -1,0 +1,3 @@
+../Core/Src/engine/moves.c:24:5:make_move	9
+../Core/Src/engine/moves.c:64:9:check_promotion	1
+../Core/Src/engine/moves.c:74:5:generate_moves	33

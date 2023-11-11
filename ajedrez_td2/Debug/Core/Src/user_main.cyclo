@@ -1,2 +1,3 @@
-../Core/Src/user_main.c:22:6:user_init	1
-../Core/Src/user_main.c:30:6:user_loop	5
+../Core/Src/user_main.c:26:6:user_init	1
+../Core/Src/user_main.c:38:9:get_promotion	1
+../Core/Src/user_main.c:56:6:user_loop	2

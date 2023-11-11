@@ -12,7 +12,9 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/reed/subdir.mk
+-include Core/Src/lighting/subdir.mk
 -include Core/Src/led/subdir.mk
+-include Core/Src/engine/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
 
@@ -62,8 +64,8 @@ all: main-build
 main-build: ajedrez_td2.elf secondary-outputs
 
 # Tool invocations
-ajedrez_td2.elf ajedrez_td2.map: $(OBJS) $(USER_OBJS) /home/bruno/dev/utn/td2/td2-proyecto/ajedrez_td2/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ajedrez_td2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/bruno/dev/utn/td2/td2-proyecto/ajedrez_td2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ajedrez_td2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ajedrez_td2.elf ajedrez_td2.map: $(OBJS) $(USER_OBJS) C:\Users\Bruno\dev\utn\td2\td2-proyecto\ajedrez_td2\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ajedrez_td2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Bruno\dev\utn\td2\td2-proyecto\ajedrez_td2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ajedrez_td2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

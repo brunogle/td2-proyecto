@@ -12,6 +12,10 @@
 #include "led/ws2812.h"
 #include "reed/reed.h"
 
+#include "engine/engine.h"
+#include "lighting/lighting.h"
+#include "game.h"
+
 #include <stdlib.h>
 #include <math.h>
 
@@ -21,8 +25,30 @@ TIM_HandleTypeDef * user_htim1;
 
 void user_init(){
 	ws2812_init();
+
+	game_set_sensor_reader((sensor_reader_t)reed_scan_sensors);
+
+	game_set_led_output_array(ws2812_color_data);
+
+	game_reset();
+
 }
 
+
+piece_t get_promotion()
+{
+    printf("Ingrese numero de pieza para seleccionar la promocion:\n");
+    printf("Caballo: %d\n", KNIGHT);
+    printf("Alfil: %d\n", BISHOP);
+    printf("Reina: %d\n", QUEEN);
+
+    unsigned int prom;
+
+    printf("Seleccion: ");
+    scanf("%u", &prom);
+
+    return (piece_t) prom;
+}
 
 
 uint8_t sensor_data[64];
@@ -30,24 +56,13 @@ uint8_t sensor_data[64];
 void user_loop(){
 
 
-	reed_scan_sensors(sensor_data);
+	game_fsm();
 
-
-	for(int row = 0; row < 8; row++){
-		for(int col = 0; col < 8; col++){
-			if(sensor_data[row*8 + col]){
-				ws2812_color_data[row*8 + col] = 0xFF0000;
-			}
-			else{
-				ws2812_color_data[row*8 + col] = 0x000080;
-			}
-		}
-	}
 
 	ws2812_update_leds_from_data(user_htim1);
 	while(ws2812_finished_dma == 0){}
 
-	HAL_Delay(10);
+	HAL_Delay(1);
 }
 
 

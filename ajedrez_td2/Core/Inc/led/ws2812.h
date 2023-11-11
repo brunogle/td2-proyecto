@@ -18,7 +18,7 @@
 
 extern uint16_t ws2812_pwm_data[64 * 24 + 60]; //PWM data fed to TIM1_CH4 by DMA
 
-extern uint32_t ws2812_color_data[64]; //Color data: 24bits: 0xBBRRGG
+extern uint32_t ws2812_color_data[8][8]; //Color data: 24bits: 0xBBRRGG
 
 extern uint8_t ws2812_finished_dma; //DMA finished flag
 

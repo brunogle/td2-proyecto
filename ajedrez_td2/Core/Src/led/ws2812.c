@@ -12,7 +12,7 @@
 
 uint16_t ws2812_pwm_data[64 * 24 + 60]; //PWM data fed to TIM1_CH4 by DMA
 
-uint32_t ws2812_color_data[64]; //Color data: 24bits: 0xBBRRGG
+uint32_t ws2812_color_data[8][8]; //Color data: 24bits: 0xBBRRGG
 
 uint8_t ws2812_finished_dma; //DMA finished flag
 
@@ -41,15 +41,22 @@ uint8_t led_strip_pos_lut[] = {	63, 48, 47, 32, 31, 16, 15, 0,
 								56, 55, 40, 39, 24, 23, 8, 7};
 
 
+
 void ws2812_update_pwm_data(){
 	for(int row = 0; row < 8; row++){
 		for(int col = 0; col < 8; col++){
 
+			int index = row*8 + col;
+
+			uint32_t ws2812_corrected_color = ((ws2812_color_data[row][col] & (0x00FF00)) << 8) |
+											  ((ws2812_color_data[row][col] & (0xFF0000)) >> 8) |
+										      (ws2812_color_data[row][col] & 0x0000FF);
+
 			for(int i = 0; i < 24; i++){
 
-				int index = row*8 + col;
 
-				if(ws2812_color_data[index] & (0x800000 >> i))
+
+				if(ws2812_corrected_color & (0x800000 >> i))
 					ws2812_pwm_data[60 + 24*led_strip_pos_lut[index] + i] = WS2812_ONE;
 				else
 					ws2812_pwm_data[60 + 24*led_strip_pos_lut[index] + i] = WS2812_ZERO;

@@ -1,0 +1,6 @@
+../Core/Src/engine/interface.c:7:5:load_fen	26
+../Core/Src/engine/interface.c:155:6:display_board	3
+../Core/Src/engine/interface.c:184:8:str_to_move	3
+../Core/Src/engine/interface.c:209:9:str_to_square	5
+../Core/Src/engine/interface.c:228:5:move_to_str	1
+../Core/Src/engine/interface.c:234:5:square_to_string	1

@@ -22,8 +22,10 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Core/Src/led \
+Core/Src/engine \
 Core/Src \
+Core/Src/led \
+Core/Src/lighting \
 Core/Src/reed \
 Core/Startup \
 Drivers/STM32F4xx_HAL_Driver/Src \

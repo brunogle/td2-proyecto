@@ -1,0 +1,6 @@
+../Core/Src/engine/interface.c:7:5:load_fen	24	static
+../Core/Src/engine/interface.c:155:6:display_board	40	static
+../Core/Src/engine/interface.c:184:8:str_to_move	32	static
+../Core/Src/engine/interface.c:209:9:str_to_square	24	static
+../Core/Src/engine/interface.c:228:5:move_to_str	16	static
+../Core/Src/engine/interface.c:234:5:square_to_string	16	static

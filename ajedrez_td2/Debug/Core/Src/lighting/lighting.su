@@ -1,0 +1,10 @@
+../Core/Src/lighting/lighting.c:19:6:lighting_set_output	16	static
+../Core/Src/lighting/lighting.c:25:6:set_color	24	static
+../Core/Src/lighting/lighting.c:37:6:paint_board	16	static
+../Core/Src/lighting/lighting.c:46:5:paint_valid_moves	32	static
+../Core/Src/lighting/lighting.c:61:6:paint_differences	32	static
+../Core/Src/lighting/lighting.c:82:6:paint_capture	16	static
+../Core/Src/lighting/lighting.c:91:6:lighting_set_state	16	static
+../Core/Src/lighting/lighting.c:95:6:lighting_piece_lifted_square	16	static
+../Core/Src/lighting/lighting.c:99:6:set_valid_moves	16	static
+../Core/Src/lighting/lighting.c:104:6:lighting_refresh	8	static
