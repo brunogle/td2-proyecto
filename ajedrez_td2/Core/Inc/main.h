@@ -65,6 +65,10 @@ void Error_Handler(void);
 #define REED_1_GPIO_Port GPIOC
 #define REED_2_Pin GPIO_PIN_1
 #define REED_2_GPIO_Port GPIOC
+#define LCD_D5_Pin GPIO_PIN_2
+#define LCD_D5_GPIO_Port GPIOA
+#define LCD_D4_Pin GPIO_PIN_3
+#define LCD_D4_GPIO_Port GPIOA
 #define LD2_Pin GPIO_PIN_5
 #define LD2_GPIO_Port GPIOA
 #define REED_4_Pin GPIO_PIN_6
@@ -73,12 +77,16 @@ void Error_Handler(void);
 #define REED_5_GPIO_Port GPIOA
 #define REED_3_Pin GPIO_PIN_0
 #define REED_3_GPIO_Port GPIOB
+#define LCD_D7_Pin GPIO_PIN_1
+#define LCD_D7_GPIO_Port GPIOB
 #define REED_B_Pin GPIO_PIN_10
 #define REED_B_GPIO_Port GPIOB
 #define REED_H_Pin GPIO_PIN_13
 #define REED_H_GPIO_Port GPIOB
 #define REED_G_Pin GPIO_PIN_14
 #define REED_G_GPIO_Port GPIOB
+#define LCD_D6_Pin GPIO_PIN_15
+#define LCD_D6_GPIO_Port GPIOB
 #define REED_7_Pin GPIO_PIN_7
 #define REED_7_GPIO_Port GPIOC
 #define REED_A_Pin GPIO_PIN_8
@@ -93,6 +101,8 @@ void Error_Handler(void);
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
+#define LCD_E_Pin GPIO_PIN_15
+#define LCD_E_GPIO_Port GPIOA
 #define REED_D_Pin GPIO_PIN_3
 #define REED_D_GPIO_Port GPIOB
 #define REED_C_Pin GPIO_PIN_4
@@ -101,6 +111,8 @@ void Error_Handler(void);
 #define REED_E_GPIO_Port GPIOB
 #define REED_6_Pin GPIO_PIN_6
 #define REED_6_GPIO_Port GPIOB
+#define LCD_RS_Pin GPIO_PIN_7
+#define LCD_RS_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

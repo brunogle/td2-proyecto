@@ -18,11 +18,12 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "user_main.h"
-
+#include "characterLCD.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +45,7 @@
 TIM_HandleTypeDef htim1;
 DMA_HandleTypeDef hdma_tim1_ch4_trig_com;
 
+osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -53,6 +55,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_TIM1_Init(void);
+void StartDefaultTask(void const * argument);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -95,17 +99,51 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
 
+  /* USER CODE END 2 */
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* definition and creation of defaultTask */
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+
   user_htim1 = &htim1;
   user_init();
 
+  LCD_Init();
+  LCD_Send(LCD_POSICION_RENGLON_1, LCD_COMANDO);
+  LCD_PrintString("Hola");
 
-  /* USER CODE END 2 */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
 
+  /* Start scheduler */
+  //osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+
+   while (1)
   {
-	 user_loop();
+	 //user_loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -234,7 +272,7 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA2_Stream4_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream4_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream4_IRQn);
 
 }
@@ -260,10 +298,12 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, REED_1_Pin|REED_2_Pin|REED_7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|REED_4_Pin|REED_5_Pin|REED_8_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LCD_D5_Pin|LCD_D4_Pin|LD2_Pin|REED_4_Pin
+                          |REED_5_Pin|REED_8_Pin|LCD_E_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, REED_3_Pin|REED_6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, REED_3_Pin|LCD_D7_Pin|LCD_D6_Pin|REED_6_Pin
+                          |LCD_RS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -278,15 +318,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin REED_4_Pin REED_5_Pin REED_8_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin|REED_4_Pin|REED_5_Pin|REED_8_Pin;
+  /*Configure GPIO pins : LCD_D5_Pin LCD_D4_Pin LD2_Pin REED_4_Pin
+                           REED_5_Pin REED_8_Pin LCD_E_Pin */
+  GPIO_InitStruct.Pin = LCD_D5_Pin|LCD_D4_Pin|LD2_Pin|REED_4_Pin
+                          |REED_5_Pin|REED_8_Pin|LCD_E_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : REED_3_Pin REED_6_Pin */
-  GPIO_InitStruct.Pin = REED_3_Pin|REED_6_Pin;
+  /*Configure GPIO pins : REED_3_Pin LCD_D7_Pin LCD_D6_Pin REED_6_Pin
+                           LCD_RS_Pin */
+  GPIO_InitStruct.Pin = REED_3_Pin|LCD_D7_Pin|LCD_D6_Pin|REED_6_Pin
+                          |LCD_RS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -313,6 +357,45 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void const * argument)
+{
+  /* USER CODE BEGIN 5 */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END 5 */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM2 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM2) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

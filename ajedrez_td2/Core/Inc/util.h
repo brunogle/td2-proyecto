@@ -17,13 +17,15 @@
  */
 __STATIC_INLINE void DWT_Delay_us(volatile uint32_t microseconds)
 {
-  uint32_t clk_cycle_start = DWT->CYCCNT;
+  DWT->CTRL|= DWT_CTRL_CYCCNTENA_Msk;
+
+  DWT->CYCCNT = 0;
 
   /* Go to number of cycles for system */
   microseconds *= (HAL_RCC_GetHCLKFreq() / 1000000);
 
   /* Delay till end */
-  while ((DWT->CYCCNT - clk_cycle_start) < microseconds);
+  while (DWT->CYCCNT < microseconds);
 }
 
 
