@@ -68,8 +68,8 @@ all: main-build
 main-build: ajedrez_td2.elf secondary-outputs
 
 # Tool invocations
-ajedrez_td2.elf ajedrez_td2.map: $(OBJS) $(USER_OBJS) C:\Users\Tomas\Desktop\TD2\td2-proyecto\ajedrez_td2\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ajedrez_td2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Tomas\Desktop\TD2\td2-proyecto\ajedrez_td2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ajedrez_td2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ajedrez_td2.elf ajedrez_td2.map: $(OBJS) $(USER_OBJS) C:\Users\Zuri\Desktop\TD2-Proyecto\ajedrez_td2\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ajedrez_td2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Zuri\Desktop\TD2-Proyecto\ajedrez_td2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ajedrez_td2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
