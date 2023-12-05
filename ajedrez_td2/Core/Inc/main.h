@@ -79,8 +79,14 @@ void Error_Handler(void);
 #define REED_H_GPIO_Port GPIOB
 #define REED_G_Pin GPIO_PIN_14
 #define REED_G_GPIO_Port GPIOB
+#define BOTON_1_Pin GPIO_PIN_6
+#define BOTON_1_GPIO_Port GPIOC
 #define REED_7_Pin GPIO_PIN_7
 #define REED_7_GPIO_Port GPIOC
+#define BOTON_2_Pin GPIO_PIN_8
+#define BOTON_2_GPIO_Port GPIOC
+#define BOTON_3_Pin GPIO_PIN_9
+#define BOTON_3_GPIO_Port GPIOC
 #define REED_A_Pin GPIO_PIN_8
 #define REED_A_GPIO_Port GPIOA
 #define REED_8_Pin GPIO_PIN_9

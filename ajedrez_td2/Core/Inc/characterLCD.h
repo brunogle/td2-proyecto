@@ -16,6 +16,12 @@ void lcd_send_cmd(char data);
 void lcd_send_data (char data);
 void lcd_send_string(char * str);
 
+typedef enum {
+	CMD_TYPE,
+	DATA_TYPE,
+	STRING_TYPE
+} LCDQueueItemType_t;
+
 // Estructura para mensajes de la cola del LCD
 // Tipo 0: CMD
 // En data[0] se guarda el comando a mandar
@@ -28,7 +34,7 @@ void lcd_send_string(char * str);
 // El delay no es necesario
 typedef struct LCD_QueueItem
 {
-	uint8_t type;
+	LCDQueueItemType_t type;
 	char data[17]; // Max 16 caracteres + \0
 	uint32_t delay;
 } LCDQueueItem_t;

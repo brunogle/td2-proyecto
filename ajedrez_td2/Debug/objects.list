@@ -10,6 +10,7 @@
 "./Core/Src/syscalls.o"
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f4xx.o"
+"./Core/Src/tareas.o"
 "./Core/Src/user_main.o"
 "./Core/Src/util.o"
 "./Core/Src/engine/board.o"

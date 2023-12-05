@@ -1,0 +1,4 @@
+../Core/Src/tareas.c:23:6:t_LCD	40	static
+../Core/Src/tareas.c:47:6:t_Botones	64	static
+../Core/Src/tareas.c:90:6:t_userLoop	16	static
+../Core/Src/tareas.c:99:6:t_WS2812	16	static
