@@ -50,17 +50,7 @@ DMA_HandleTypeDef hdma_tim1_ch4_trig_com;
 osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
 
-void t_Inits(void*) {
-	user_htim1 = &htim1;
-	user_init();
-
-	lcd_init();
-	lcd_send_data('A');
-
-	while (1) {
-
-	}
-}
+xQueueHandle lcd_queue;
 
 /* USER CODE END PV */
 
@@ -78,6 +68,30 @@ void StartDefaultTask(void const * argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+void t_LCD(void*) {
+	lcd_init();
+
+	LCDQueueItem_t msg;
+
+	while (1) {
+		xQueueReceive(lcd_queue, &msg, portMAX_DELAY);
+		switch(msg.type)
+		{
+		case 0:
+			lcd_send_cmd(msg.data[0]);
+			vTaskDelay((TickType_t)msg.delay);
+			break;
+		case 1:
+			lcd_send_data(msg.data[0]);
+			break;
+		case 2:
+			lcd_send_string(msg.data);
+			break;
+		default:
+		}
+	}
+}
 
 /* USER CODE END 0 */
 
@@ -114,6 +128,9 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
+  user_htim1 = &htim1;
+  user_init();
+
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -129,7 +146,7 @@ int main(void)
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-	/* add queues, ... */
+  lcd_queue = xQueueCreate(20,sizeof(LCDQueueItem_t));
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -139,10 +156,10 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
 
-	xTaskCreate(t_Inits, "t_Inits",
+	xTaskCreate(t_LCD, "t_LCD",
 	configMINIMAL_STACK_SIZE,
 	NULL,
-	tskIDLE_PRIORITY + 1,
+	tskIDLE_PRIORITY + 10,
 	NULL);
 
 	/* add threads, ... */
