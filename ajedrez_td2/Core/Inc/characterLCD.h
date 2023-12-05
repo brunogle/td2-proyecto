@@ -14,6 +14,7 @@
 void lcd_init (void);
 void lcd_send_cmd(char data);
 void lcd_send_data (char data);
+void lcd_send_string(char * str);
 
 // Estructura para mensajes de la cola del LCD
 // Tipo 0: CMD

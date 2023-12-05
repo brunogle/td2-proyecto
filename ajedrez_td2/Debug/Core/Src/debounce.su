@@ -1,0 +1,3 @@
+../Core/Src/debounce.c:3:6:debounce_init	16	static
+../Core/Src/debounce.c:12:6:debounce_run	24	static
+../Core/Src/debounce.c:59:5:debounce_flank	16	static
