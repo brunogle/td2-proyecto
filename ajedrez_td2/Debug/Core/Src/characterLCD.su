@@ -2,3 +2,7 @@
 ../Core/Src/characterLCD.c:34:6:lcd_send_cmd	32	static
 ../Core/Src/characterLCD.c:47:6:lcd_send_data	32	static
 ../Core/Src/characterLCD.c:60:6:lcd_send_string	16	static
+../Core/Src/characterLCD.c:65:16:lcd_msg_from_string	56	static
+../Core/Src/characterLCD.c:77:16:lcd_msg_clear	48	static
+../Core/Src/characterLCD.c:84:16:lcd_msg_first_line	48	static
+../Core/Src/characterLCD.c:91:16:lcd_msg_second_line	48	static

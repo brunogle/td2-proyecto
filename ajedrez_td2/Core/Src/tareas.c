@@ -15,21 +15,23 @@
 #include "debounce.h"
 #include "user_main.h"
 
-xQueueHandle lcd_queue;
-xQueueHandle ws2812_queue;
+extern xQueueHandle lcd_queue;
+extern xQueueHandle buttons_queue;
+extern xSemaphoreHandle ws2812_sem;
 
 extern TIM_HandleTypeDef htim1;
 
+void tareas_error_handler(uint8_t);
+
 void t_LCD(void*) {
+
+	if (lcd_queue == NULL) {
+		tareas_error_handler(1);
+	}
+
 	lcd_init();
 
 	LCDQueueItem_t msg;
-	lcd_queue = xQueueCreate(20, sizeof(LCDQueueItem_t));
-
-	if(lcd_queue == NULL)
-	{
-		error_handler(1);
-	}
 
 	while (1) {
 		xQueueReceive(lcd_queue, &msg, portMAX_DELAY);
@@ -57,7 +59,11 @@ void t_Botones(void*) {
 	debounce_init(&b2, 1, 2);
 	debounce_init(&b3, 1, 2);
 
-	LCDQueueItem_t msg = { 0 };
+	if (buttons_queue == NULL) {
+		tareas_error_handler(4);
+	}
+
+	uint8_t msg = 0;
 
 	while (1) {
 		debounce_run(&b1, HAL_GPIO_ReadPin(BOTON_1_GPIO_Port, BOTON_1_Pin));
@@ -65,26 +71,23 @@ void t_Botones(void*) {
 		debounce_run(&b3, HAL_GPIO_ReadPin(BOTON_3_GPIO_Port, BOTON_3_Pin));
 
 		if (debounce_flank(&b1)) {
-			msg.type = DATA_TYPE;
-			msg.data[0] = 'A';
-			if (uxQueueMessagesWaiting(lcd_queue) < 20) {
-				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+			msg = 1;
+			if (uxQueueMessagesWaiting(buttons_queue) < 20) {
+				xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
 			}
 		}
 
 		if (debounce_flank(&b2)) {
-			msg.type = DATA_TYPE;
-			msg.data[0] = 'B';
-			if (uxQueueMessagesWaiting(lcd_queue) < 20) {
-				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+			msg = 2;
+			if (uxQueueMessagesWaiting(buttons_queue) < 20) {
+				xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
 			}
 		}
 
 		if (debounce_flank(&b3)) {
-			msg.type = DATA_TYPE;
-			msg.data[0] = 'C';
-			if (uxQueueMessagesWaiting(lcd_queue) < 20) {
-				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+			msg = 3;
+			if (uxQueueMessagesWaiting(buttons_queue) < 20) {
+				xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
 			}
 		}
 
@@ -93,29 +96,53 @@ void t_Botones(void*) {
 }
 
 void t_userLoop(void*) {
+
+	if (ws2812_sem == NULL) {
+		tareas_error_handler(2);
+	}
+
+	if (buttons_queue == NULL) {
+		tareas_error_handler(4);
+	}
+
 	user_htim1 = &htim1;
 	user_init();
+
+	ws2812_init();
+
 	while (1) {
 		user_loop();
-		vTaskDelay(1);
+		xSemaphoreGive(ws2812_sem);
+		//ws2812_update_leds_from_data(user_htim1);
+		vTaskDelay(33); //30 fps aprox
 	}
 }
 
 void t_WS2812(void*) {
-	//ws2812_queue = xQueueCreate(2, sizeof(uint8_t));
+
+	if (ws2812_sem == NULL) {
+		tareas_error_handler(2);
+	}
+
 	ws2812_init();
+
 	while (1) {
-		ws2812_update_leds_from_data(user_htim1);
-		vTaskDelay(33); //30 fps aprox
-		while(!ws2812_finished_dma){
-			vTaskDelay(1);
+
+		if (xSemaphoreTake(ws2812_sem,portMAX_DELAY) != pdTRUE) {
+			tareas_error_handler(3);
 		}
+
+		ws2812_update_leds_from_data(user_htim1);
+
+		while (!ws2812_finished_dma) {
+			vTaskDelay(5);
+		}
+
 	}
 }
 
-void error_handler(uint8_t error) {
-	while(1)
-	{
+void tareas_error_handler(uint8_t error) {
+	while (1) {
 		UNUSED(error);
 	}
 

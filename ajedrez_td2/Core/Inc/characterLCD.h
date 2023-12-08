@@ -16,6 +16,7 @@ void lcd_send_cmd(char data);
 void lcd_send_data (char data);
 void lcd_send_string(char * str);
 
+
 typedef enum {
 	CMD_TYPE,
 	DATA_TYPE,
@@ -38,5 +39,10 @@ typedef struct LCD_QueueItem
 	char data[17]; // Max 16 caracteres + \0
 	uint32_t delay;
 } LCDQueueItem_t;
+
+LCDQueueItem_t lcd_msg_from_string(char * str);
+LCDQueueItem_t lcd_msg_clear(void);
+LCDQueueItem_t lcd_msg_first_line(void);
+LCDQueueItem_t lcd_msg_second_line(void);
 
 #endif /* CHARACTERLCD_H_ */

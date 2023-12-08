@@ -31,34 +31,67 @@ void lcd_init(void) {
 	lcd_send_cmd(0x0C); //Display on/off control --> D = 1, C and B = 0. (Cursor and blink, last two bits)
 }
 
-void lcd_send_cmd (char cmd)
-{
-  char data_u, data_l;
-	uint8_t data_t[4];
-	data_u = (cmd&0xf0);
-	data_l = ((cmd<<4)&0xf0);
-	data_t[0] = data_u|0x0C;  //en=1, rs=0
-	data_t[1] = data_u|0x08;  //en=0, rs=0
-	data_t[2] = data_l|0x0C;  //en=1, rs=0
-	data_t[3] = data_l|0x08;  //en=0, rs=0
-	HAL_I2C_Master_Transmit (&hi2c1, SLAVE_ADDRESS_LCD,(uint8_t *) data_t, 4, 100);
-}
-
-void lcd_send_data (char data)
-{
+void lcd_send_cmd(char cmd) {
 	char data_u, data_l;
 	uint8_t data_t[4];
-	data_u = (data&0xf0);
-	data_l = ((data<<4)&0xf0);
-	data_t[0] = data_u|0x0D;  //en=1, rs=1
-	data_t[1] = data_u|0x09;  //en=0, rs=1
-	data_t[2] = data_l|0x0D;  //en=1, rs=1
-	data_t[3] = data_l|0x09;  //en=0, rs=1
-	HAL_I2C_Master_Transmit (&hi2c1, SLAVE_ADDRESS_LCD,(uint8_t *) data_t, 4, 100);
+	data_u = (cmd & 0xf0);
+	data_l = ((cmd << 4) & 0xf0);
+	data_t[0] = data_u | 0x0C;  //en=1, rs=0
+	data_t[1] = data_u | 0x08;  //en=0, rs=0
+	data_t[2] = data_l | 0x0C;  //en=1, rs=0
+	data_t[3] = data_l | 0x08;  //en=0, rs=0
+	HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDRESS_LCD, (uint8_t*) data_t, 4,
+			100);
 }
 
-void lcd_send_string(char * str)
-{
-	while(*str)
+void lcd_send_data(char data) {
+	char data_u, data_l;
+	uint8_t data_t[4];
+	data_u = (data & 0xf0);
+	data_l = ((data << 4) & 0xf0);
+	data_t[0] = data_u | 0x0D;  //en=1, rs=1
+	data_t[1] = data_u | 0x09;  //en=0, rs=1
+	data_t[2] = data_l | 0x0D;  //en=1, rs=1
+	data_t[3] = data_l | 0x09;  //en=0, rs=1
+	HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDRESS_LCD, (uint8_t*) data_t, 4,
+			100);
+}
+
+void lcd_send_string(char *str) {
+	while (*str)
 		lcd_send_data(*(str++));
+}
+
+LCDQueueItem_t lcd_msg_from_string(char *str) {
+	LCDQueueItem_t msg = { 0 };
+	msg.type = STRING_TYPE;
+	for (int i = 0; i < 16; i++) {
+		msg.data[i] = *str++;
+		if (!(*str))
+			break;
+	}
+
+	return msg;
+}
+
+LCDQueueItem_t lcd_msg_clear(void) {
+	LCDQueueItem_t msg = { 0 };
+	msg.type = CMD_TYPE;
+	msg.data[0] = 0x01;
+	msg.delay = 3;
+	return msg;
+}
+LCDQueueItem_t lcd_msg_first_line(void){
+	LCDQueueItem_t msg = { 0 };
+	msg.type = CMD_TYPE;
+	msg.data[0] = LCD_POSICION_RENGLON_1;
+	msg.delay = 1;
+	return msg;
+}
+LCDQueueItem_t lcd_msg_second_line(void){
+	LCDQueueItem_t msg = { 0 };
+	msg.type = CMD_TYPE;
+	msg.data[0] = LCD_POSICION_RENGLON_2;
+	msg.delay = 1;
+	return msg;
 }

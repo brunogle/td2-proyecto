@@ -15,11 +15,10 @@ void reed_scan_sensors(uint8_t data[8]){
 	HAL_GPIO_WritePin(REED_7_GPIO_Port, REED_7_Pin, row == 6);
 	HAL_GPIO_WritePin(REED_8_GPIO_Port, REED_8_Pin, row == 7);
 
-	for(int i = 0; i < 10; i++){ } //Delay chico para dejar que la señal se propage
-
+	for(int i = 0; i < 10; i++){ asm("nop"); } //Delay chico para dejar que la señal se propage
 
     data[row] = 0;
-	data[row] |= (HAL_GPIO_ReadPin(REED_A_GPIO_Port, REED_A_Pin) != 0);
+    data[row] |= (HAL_GPIO_ReadPin(REED_A_GPIO_Port, REED_A_Pin) != 0);
 	data[row] |= (HAL_GPIO_ReadPin(REED_B_GPIO_Port, REED_B_Pin) != 0) << 1;
 	data[row] |= (HAL_GPIO_ReadPin(REED_C_GPIO_Port, REED_C_Pin) != 0) << 2;
 	data[row] |= (HAL_GPIO_ReadPin(REED_D_GPIO_Port, REED_D_Pin) != 0) << 3;
