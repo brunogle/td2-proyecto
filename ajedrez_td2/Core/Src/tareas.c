@@ -105,10 +105,23 @@ void t_userLoop(void*) {
 		tareas_error_handler(4);
 	}
 
+	if (lcd_queue == NULL) {
+		tareas_error_handler(1);
+	}
+
 	user_htim1 = &htim1;
 	user_init();
 
+	LCDQueueItem_t msg = { 0 };
+
 	ws2812_init();
+
+	msg = lcd_msg_clear();
+	xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+	msg = lcd_msg_first_line();
+	xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+	msg = lcd_msg_from_string("Ajedrez Inteligente");
+	xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
 	while (1) {
 		user_loop();

@@ -1,0 +1,5 @@
+../Core/Src/movement.c:11:16:get_last_sensor_change	32	static
+../Core/Src/movement.c:35:6:get_expected_sensor_state	0	static
+../Core/Src/movement.c:43:6:is_board_ok	32	static
+../Core/Src/movement.c:61:5:get_lifted_moves	12	static
+../Core/Src/movement.c:76:6:movement_fsm	32	static

@@ -46,7 +46,8 @@ Core/Src/tareas.o: ../Core/Src/tareas.c ../Core/Inc/tareas.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Core/Inc/characterLCD.h ../Core/Inc/main.h ../Core/Inc/led/ws2812.h \
- ../Core/Inc/debounce.h ../Core/Inc/user_main.h
+ ../Core/Inc/debounce.h ../Core/Inc/user_main.h \
+ ../Core/Inc/engine/moves.h ../Core/Inc/engine/board.h
 ../Core/Inc/tareas.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -100,3 +101,5 @@ Core/Src/tareas.o: ../Core/Src/tareas.c ../Core/Inc/tareas.h \
 ../Core/Inc/led/ws2812.h:
 ../Core/Inc/debounce.h:
 ../Core/Inc/user_main.h:
+../Core/Inc/engine/moves.h:
+../Core/Inc/engine/board.h:

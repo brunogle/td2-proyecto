@@ -24,6 +24,7 @@
 
 TIM_HandleTypeDef *user_htim1;
 extern xQueueHandle buttons_queue;
+extern xQueueHandle lcd_queue;
 
 void user_init() {
 	game_set_sensor_reader((sensor_reader_t) reed_scan_sensors);
@@ -47,41 +48,40 @@ piece_t get_promotion() {
 	 PAWN,
 	 */
 
-	xQueueReset(buttons_queue); // Borro mensajes si habia alguna pulsada de boton pendiente
+	//xQueueReset(buttons_queue); // Borro mensajes si habia alguna pulsada de boton pendiente
 
 	while (1) {
 		msg = lcd_msg_clear();
-		xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 		msg = lcd_msg_first_line();
-		xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 		msg = lcd_msg_from_string("Elija pieza:");
-		xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 		msg = lcd_msg_second_line();
-		xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 		switch (piece) {
 		case QUEEN:
 			msg = lcd_msg_from_string("-> Reina");
-			xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+			xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 			break;
 		case ROOK:
 			msg = lcd_msg_from_string("-> Torre");
-			xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+			xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 			break;
 		case KNIGHT:
 			msg = lcd_msg_from_string("-> Caballo");
-			xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+			xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 			break;
 		case BISHOP:
 			msg = lcd_msg_from_string("-> Alfil");
-			xQueueSend(buttons_queue, (void* )&msg, portMAX_DELAY);
+			xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 			break;
 		default:
 		}
-
 		xQueueReceive(buttons_queue, &button, portMAX_DELAY);
 
 		switch (button) {
-		case 1: // Boton verde, salgo del while con la ultima pieza seleccionada
+		case 3: // Boton verde, salgo del while con la ultima pieza seleccionada
 			break;
 		case 2: // Cambio de pieza "ascendentemente"
 			piece++;
@@ -90,7 +90,7 @@ piece_t get_promotion() {
 
 			button = 0;
 			break;
-		case 3: // Cambio de pieza "descendentemente"
+		case 1: // Cambio de pieza "descendentemente"
 			piece--;
 			if (piece < 1) // Salteo el rey
 				piece = 4; // Salteon el peon

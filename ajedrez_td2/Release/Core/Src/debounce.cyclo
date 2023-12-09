@@ -1,0 +1,3 @@
+../Core/Src/debounce.c:3:6:debounce_init	1
+../Core/Src/debounce.c:12:6:debounce_run	11
+../Core/Src/debounce.c:59:5:debounce_flank	2

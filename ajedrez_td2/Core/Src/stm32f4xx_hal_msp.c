@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file         stm32f4xx_hal_msp.c
-  * @brief        This file provides code for the MSP Initialization
-  *               and de-Initialization codes.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file         stm32f4xx_hal_msp.c
+ * @brief        This file provides code for the MSP Initialization
+ *               and de-Initialization codes.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2023 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -95,6 +95,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
   {
   /* USER CODE BEGIN I2C1_MspInit 0 */
 
+		// Hay que modificar manualmente GPIO_InitStruct.Pull = GPIO_NOPULL;
   /* USER CODE END I2C1_MspInit 0 */
 
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -204,6 +205,15 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
   if(htim->Instance==TIM1)
   {
   /* USER CODE BEGIN TIM1_MspPostInit 0 */
+		/*
+		 *  GPIO_InitStruct.Pin = LED_DOUT_Pin;
+		 GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+		 GPIO_InitStruct.Pull = GPIO_PULLUP;
+		 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+		 GPIO_InitStruct.Alternate = GPIO_AF1_TIM1;
+		 HAL_GPIO_Init(LED_DOUT_GPIO_Port, &GPIO_InitStruct);
+		 *
+		 */
 
   /* USER CODE END TIM1_MspPostInit 0 */
 

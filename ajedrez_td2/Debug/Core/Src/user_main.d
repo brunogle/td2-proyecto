@@ -46,12 +46,12 @@ Core/Src/user_main.o: ../Core/Src/user_main.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- ../Core/Inc/user_main.h ../Core/Inc/led/ws2812.h ../Core/Inc/reed/reed.h \
- ../Core/Inc/engine/engine.h ../Core/Inc/engine/moves.h \
- ../Core/Inc/engine/board.h ../Core/Inc/lighting/lighting.h \
+ ../Core/Inc/user_main.h ../Core/Inc/main.h ../Core/Inc/engine/moves.h \
+ ../Core/Inc/engine/board.h ../Core/Inc/led/ws2812.h \
+ ../Core/Inc/reed/reed.h ../Core/Inc/engine/engine.h \
+ ../Core/Inc/engine/moves.h ../Core/Inc/lighting/lighting.h \
  ../Core/Inc/lighting/../engine/engine.h ../Core/Inc/game.h \
- ../Core/Inc/lighting/lighting.h ../Core/Inc/characterLCD.h \
- ../Core/Inc/main.h
+ ../Core/Inc/lighting/lighting.h ../Core/Inc/characterLCD.h
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -100,14 +100,15 @@ Core/Src/user_main.o: ../Core/Src/user_main.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 ../Core/Inc/user_main.h:
+../Core/Inc/main.h:
+../Core/Inc/engine/moves.h:
+../Core/Inc/engine/board.h:
 ../Core/Inc/led/ws2812.h:
 ../Core/Inc/reed/reed.h:
 ../Core/Inc/engine/engine.h:
 ../Core/Inc/engine/moves.h:
-../Core/Inc/engine/board.h:
 ../Core/Inc/lighting/lighting.h:
 ../Core/Inc/lighting/../engine/engine.h:
 ../Core/Inc/game.h:
 ../Core/Inc/lighting/lighting.h:
 ../Core/Inc/characterLCD.h:
-../Core/Inc/main.h:

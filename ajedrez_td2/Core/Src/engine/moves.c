@@ -1,5 +1,6 @@
 #include "engine/moves.h"
 #include "engine/board.h"
+#include "user_main.h"
 
 
 /*
@@ -33,6 +34,7 @@ int make_move(game_state_t * state, move_t move, uint8_t safe){
         for(uint8_t i = 0; i < nmoves; i++){
             if(moves[i].from == move.from && moves[i].to == move.to){
                 move_ok = 1;
+                move.promotion = moves[i].promotion;
             }
         }
         if(!move_ok){
