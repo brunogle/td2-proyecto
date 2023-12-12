@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "tareas.h"
 #include "characterLCD.h"
+#include "reed/reed.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -134,7 +135,6 @@ int main(void)
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-
 	xTaskCreate(t_LCD, "t_LCD",
 	configMINIMAL_STACK_SIZE,
 	NULL,
@@ -148,6 +148,12 @@ int main(void)
 	NULL);
 
 	xTaskCreate(t_WS2812, "t_WS2812",
+	configMINIMAL_STACK_SIZE,
+	NULL,
+	tskIDLE_PRIORITY + 5,
+	NULL);
+
+	xTaskCreate(t_reed_scan_sensors, "t_reed_scan_sensors",
 	configMINIMAL_STACK_SIZE,
 	NULL,
 	tskIDLE_PRIORITY + 5,
@@ -391,6 +397,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : REED_D_Pin */
+  GPIO_InitStruct.Pin = REED_D_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(REED_D_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : REED_3_Pin REED_6_Pin */
   GPIO_InitStruct.Pin = REED_3_Pin|REED_6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -398,10 +410,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : REED_B_Pin REED_H_Pin REED_G_Pin REED_D_Pin
-                           REED_C_Pin REED_E_Pin */
-  GPIO_InitStruct.Pin = REED_B_Pin|REED_H_Pin|REED_G_Pin|REED_D_Pin
-                          |REED_C_Pin|REED_E_Pin;
+  /*Configure GPIO pins : REED_B_Pin REED_H_Pin REED_G_Pin REED_C_Pin
+                           REED_E_Pin */
+  GPIO_InitStruct.Pin = REED_B_Pin|REED_H_Pin|REED_G_Pin|REED_C_Pin
+                          |REED_E_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -419,6 +431,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
+
 /* USER CODE END MX_GPIO_Init_2 */
 }
 

@@ -1,1 +1,1 @@
-../Core/Src/reed/reed.c:7:6:reed_scan_sensors	24	static,ignoring_inline_asm
+../Core/Src/reed/reed.c:12:6:t_reed_scan_sensors	16	static

@@ -71,6 +71,8 @@ void Error_Handler(void);
 #define REED_4_GPIO_Port GPIOA
 #define REED_5_Pin GPIO_PIN_7
 #define REED_5_GPIO_Port GPIOA
+#define REED_D_Pin GPIO_PIN_4
+#define REED_D_GPIO_Port GPIOC
 #define REED_3_Pin GPIO_PIN_0
 #define REED_3_GPIO_Port GPIOB
 #define REED_B_Pin GPIO_PIN_10
@@ -99,8 +101,6 @@ void Error_Handler(void);
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
-#define REED_D_Pin GPIO_PIN_3
-#define REED_D_GPIO_Port GPIOB
 #define REED_C_Pin GPIO_PIN_4
 #define REED_C_GPIO_Port GPIOB
 #define REED_E_Pin GPIO_PIN_5

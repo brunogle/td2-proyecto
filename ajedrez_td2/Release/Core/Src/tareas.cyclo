@@ -1,5 +1,5 @@
 ../Core/Src/tareas.c:26:6:t_LCD	5
 ../Core/Src/tareas.c:54:6:t_Botones	8
-../Core/Src/tareas.c:98:6:t_userLoop	4
-../Core/Src/tareas.c:135:6:t_WS2812	4
-../Core/Src/tareas.c:158:6:tareas_error_handler	1
+../Core/Src/tareas.c:98:6:t_userLoop	8
+../Core/Src/tareas.c:155:6:t_WS2812	3
+../Core/Src/tareas.c:173:6:tareas_error_handler	1

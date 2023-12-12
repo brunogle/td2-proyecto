@@ -11,7 +11,7 @@
 
 #include "stm32f4xx_hal.h"
 
-void reed_scan_sensors(uint8_t data[8]);
+void t_reed_scan_sensors();
 
 
 

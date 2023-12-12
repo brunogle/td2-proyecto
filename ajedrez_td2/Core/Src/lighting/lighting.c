@@ -3,6 +3,7 @@
 #include "movement.h"
 #include <stdint.h>
 
+extern uint8_t reed_data[8];
 
 //Array que asocia un ID de color a una 3-tuple (led_color)
 led_color color_from_id[6]= {WHITE_COLOR, BLACK_COLOR, VALID_COLOR, LIFTED_COLOR, MISSING_COLOR, INVALID_COLOR};
@@ -59,17 +60,17 @@ int paint_valid_moves(uint8_t square_lifted, move_t * valid_moves, int total_val
 
 //Pinta discrepancias entre el estado en memoria del tablero y el leido
 char paint_differences(){
-    char sensor_state[8];
-    get_sensors(sensor_state);
+    //char sensor_state[8];
+    //get_sensors(sensor_state);
     char board_ok = 1;
 
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
-            if((sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
+            if((reed_data[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
                 set_color(rank, file, INVALID_ID);
                 board_ok = 0;
             }
-            else if(!(sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
+            else if(!(reed_data[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
                 set_color(rank, file, MISSING_ID);
                 board_ok = 0;
             }

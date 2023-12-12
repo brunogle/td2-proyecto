@@ -123,7 +123,28 @@ void t_userLoop(void*) {
 	msg = lcd_msg_from_string("Ajedrez Inteligente");
 	xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
+	uint8_t button;
+
 	while (1) {
+		if (uxQueueMessagesWaiting(buttons_queue) > 0) {
+			if (xQueueReceive(buttons_queue, &button, 0) == pdTRUE) {
+				switch (button) {
+				case 1:
+					break;
+				case 2: // Boton abajo (contra el tablero)
+					msg = lcd_msg_clear();
+					xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+					msg = lcd_msg_first_line();
+					xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+					msg = lcd_msg_from_string("Ajedrez Inteligente");
+					xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+					break;
+				case 3: // Boton verde
+					user_init();
+				}
+			}
+		}
+
 		user_loop();
 		xSemaphoreGive(ws2812_sem);
 		//ws2812_update_leds_from_data(user_htim1);
@@ -140,13 +161,8 @@ void t_WS2812(void*) {
 	ws2812_init();
 
 	while (1) {
-
-		if (xSemaphoreTake(ws2812_sem,portMAX_DELAY) != pdTRUE) {
-			tareas_error_handler(3);
-		}
-
+		xSemaphoreTake(ws2812_sem, portMAX_DELAY);
 		ws2812_update_leds_from_data(user_htim1);
-
 		while (!ws2812_finished_dma) {
 			vTaskDelay(5);
 		}
@@ -155,6 +171,7 @@ void t_WS2812(void*) {
 }
 
 void tareas_error_handler(uint8_t error) {
+	__disable_irq();
 	while (1) {
 		UNUSED(error);
 	}

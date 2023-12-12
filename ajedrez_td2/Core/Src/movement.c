@@ -8,21 +8,24 @@ char new_sensor_state[8];
 
 void (*get_sensors)(char[8]);
 
+extern uint8_t reed_data[8];
+
 piece_change_t get_last_sensor_change(){
 
-    get_sensors(new_sensor_state);
+    //get_sensors(new_sensor_state);
+
 
     piece_change_t ret = {0, NONE};
 
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
-            char new_state = (new_sensor_state[rank]&(1<<file)) != 0;
+            char new_state = (reed_data[rank]&(1<<file)) != 0;
             char old_state = (previous_sensor_state[rank]&(1<<file)) != 0;
             if(new_state != old_state){
                 ret.square_affected = COORD2SQ(rank, file);
                 ret.piece_action = new_state ? PLACED : REMOVED;
                 for(int i = 0; i < 8; i++){
-                    previous_sensor_state[i] = new_sensor_state[i];
+                    previous_sensor_state[i] = reed_data[i];
                 }
                 return ret;
             }
@@ -41,16 +44,16 @@ char movement_state = WAIT_STATE;
 uint8_t square_lifted;
 
 char is_board_ok(){
-    char sensor_state[8];
-    get_sensors(sensor_state);
+    //char sensor_state[8];
+    //get_sensors(sensor_state);
     char board_ok = 1;
 
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
-            if((sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
+            if((reed_data[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) == PIECE_EMPTY){
                 board_ok = 0;
             }
-            else if(!(sensor_state[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
+            else if(!(reed_data[rank] & (1 << file)) && engine_get_piece(COORD2SQ(rank, file)) != PIECE_EMPTY){
                 board_ok = 0;
             }
         }

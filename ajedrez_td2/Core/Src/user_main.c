@@ -27,7 +27,7 @@ extern xQueueHandle buttons_queue;
 extern xQueueHandle lcd_queue;
 
 void user_init() {
-	game_set_sensor_reader((sensor_reader_t) reed_scan_sensors);
+	//game_set_sensor_reader((sensor_reader_t) reed_scan_sensors);
 
 	game_set_led_output_array(ws2812_color_data);
 

@@ -1,0 +1,3 @@
+../Core/Src/engine/moves.c:66:9:check_promotion	0	static
+../Core/Src/engine/moves.c:76:5:generate_moves	56	static
+../Core/Src/engine/moves.c:25:5:make_move	800	static
