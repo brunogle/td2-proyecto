@@ -1,5 +1,7 @@
-../Core/Src/tareas.c:26:6:t_LCD	6
-../Core/Src/tareas.c:54:6:t_Botones	8
-../Core/Src/tareas.c:98:6:t_userLoop	10
-../Core/Src/tareas.c:155:6:t_WS2812	3
-../Core/Src/tareas.c:173:6:tareas_error_handler	1
+../Core/Src/tareas.c:42:6:chess_timer	5
+../Core/Src/tareas.c:59:6:t_LCD	6
+../Core/Src/tareas.c:87:6:t_Botones	8
+../Core/Src/tareas.c:131:6:t_userLoop	12
+../Core/Src/tareas.c:227:13:ME_general	32
+../Core/Src/tareas.c:411:6:t_WS2812	3
+../Core/Src/tareas.c:429:6:tareas_error_handler	1

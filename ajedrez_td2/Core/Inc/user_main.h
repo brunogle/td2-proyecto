@@ -20,6 +20,8 @@ extern TIM_HandleTypeDef * user_htim1;
 void user_init();
 piece_t get_promotion();
 void user_loop();
+uint8_t get_side_to_move();
+uint8_t get_error_position();
 
 
 #endif /* INC_USER_MAIN_H_ */

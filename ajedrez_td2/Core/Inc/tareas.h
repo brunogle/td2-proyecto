@@ -16,4 +16,6 @@ void t_userLoop(void*);
 
 void t_WS2812(void*);
 
+void chess_timer();
+
 #endif /* INC_TAREAS_H_ */
