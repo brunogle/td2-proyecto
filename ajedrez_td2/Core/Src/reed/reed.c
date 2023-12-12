@@ -23,7 +23,7 @@ void t_reed_scan_sensors() {
 			HAL_GPIO_WritePin(REED_8_GPIO_Port, REED_8_Pin, row == 7);
 
 			//for(int i = 0; i < 100; i++){ asm("nop"); } //Delay chico para dejar que la señal se propage
-			vTaskDelay(50); // Lo uso para hacer más lenta toda la lectura
+			vTaskDelay(10); // Lo uso para hacer más lenta toda la lectura
 
 			reed_data[row] = 0;
 			reed_data[row] |= (HAL_GPIO_ReadPin(REED_A_GPIO_Port, REED_A_Pin) != 0);

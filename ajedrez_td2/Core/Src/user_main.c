@@ -16,6 +16,7 @@
 #include "engine/engine.h"
 #include "lighting/lighting.h"
 #include "game.h"
+#include "movement.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -44,7 +45,7 @@ uint8_t get_side_to_move()
 
 uint8_t get_error_position()
 {
-	return (lighting_state == LIGHTING_ERROR_STATE ? 0 : 1);
+	return (lighting_state == LIGHTING_ERROR_STATE ? 1 : 0);
 }
 
 piece_t get_promotion() {

@@ -1,5 +1,5 @@
-../Core/Src/user_main.c:32:6:user_init	8	static
-../Core/Src/user_main.c:40:9:get_side_to_move	4	static
-../Core/Src/user_main.c:45:9:get_error_position	4	static
-../Core/Src/user_main.c:50:9:get_promotion	72	static
-../Core/Src/user_main.c:124:6:user_loop	8	static
+../Core/Src/user_main.c:33:6:user_init	8	static
+../Core/Src/user_main.c:41:9:get_side_to_move	4	static
+../Core/Src/user_main.c:46:9:get_error_position	4	static
+../Core/Src/user_main.c:51:9:get_promotion	72	static
+../Core/Src/user_main.c:125:6:user_loop	8	static

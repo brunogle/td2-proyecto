@@ -39,21 +39,27 @@ uint32_t segundos_j1 = 0, segundos_j2 = 0, incremento = 0;
 
 void tareas_error_handler(uint8_t);
 
-void chess_timer() {
-	if (contar) {
-		if (get_side_to_move() == 0) {
-			if (segundos_j1 > 0)
-				segundos_j1--;
+void t_Timer() {
+	TickType_t xLastWakeTime;
+	const TickType_t xPeriod = 1000; //1seg
+	while (1) {
+		if (!get_error_position() && modo_de_juego == 1) {
+			if (get_side_to_move() == 0) {
+				if (segundos_j1 > 0)
+					segundos_j1--;
+			}
+
+			else {
+				if (segundos_j2 > 0)
+					segundos_j2--;
+			}
+
 		}
 
-		else {
-			if (segundos_j2 > 0)
-				segundos_j2--;
-		}
+		actualizar_display = 1;
 
+		vTaskDelayUntil(&xLastWakeTime, xPeriod);
 	}
-
-	actualizar_display = 1;
 }
 
 void t_LCD(void*) {
@@ -147,17 +153,18 @@ void t_userLoop(void*) {
 
 	ws2812_init();
 
-	uint8_t button;
+	uint8_t button = 0;
 
 	TickType_t xLastWakeTime;
-	const TickType_t xFrequency = 33; // 30fps aprox
+	const TickType_t xPeriod = 33; // 30fps aprox
 
 	LCDQueueItem_t msg = { 0 };
 
-	char *msg_tiempo = "JX - XX:XX";
-	char *msg_flecha = "->";
+	char msg_tiempo[] = "-> JX - XX:XX    ";
 
 	uint8_t prev_side_to_move = 0;
+
+	xQueueSend(buttons_queue, &button, 0);
 
 	while (1) {
 		if (xQueueReceive(buttons_queue, &button, 0) == pdTRUE) {
@@ -168,8 +175,9 @@ void t_userLoop(void*) {
 		case 0:
 			break;
 		case 1:
-			user_loop();
+			user_loop(); // FSM CHESS
 
+			// Detecto si hubo un cambio de turno para sumar incremento de tiempo
 			if (prev_side_to_move != get_side_to_move()) {
 				prev_side_to_move = get_side_to_move();
 				if (prev_side_to_move)
@@ -178,36 +186,47 @@ void t_userLoop(void*) {
 					segundos_j2 += incremento;
 			}
 
+			//Imprimo tiempos si tengo que hacerlo
 			if (actualizar_display && mostrar_tiempo) {
 				actualizar_display = 0;
-				msg = lcd_msg_clear();
-				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+				//msg = lcd_msg_clear();
+				//xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 				msg = lcd_msg_first_line();
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
-				if (get_side_to_move() == 0)
-					xQueueSend(lcd_queue, (void* )&msg_flecha, portMAX_DELAY);
+				if (get_side_to_move() == 0) {
+					msg_tiempo[0] = '-';
+					msg_tiempo[1] = '>';
+				} else {
+					msg_tiempo[0] = ' ';
+					msg_tiempo[1] = ' ';
+				}
 
 				// char * msg_tiempo = "JX - XX:XX";
-				msg_tiempo[1] = '1';
-				msg_tiempo[5] = (segundos_j1 / 600) + 48;
-				msg_tiempo[6] = ((segundos_j1 / 60) % 10) + 48;
-				msg_tiempo[8] = ((segundos_j1 % 100) / 10) + 48;
-				msg_tiempo[9] = (segundos_j1 % 10) + 48;
+				msg_tiempo[4] = '1';
+				msg_tiempo[8] = ((segundos_j1 / 60) / 10) + 48;
+				msg_tiempo[9] = ((segundos_j1 / 60) % 10) + 48;
+				msg_tiempo[11] = ((segundos_j1 % 60) / 10) + 48;
+				msg_tiempo[12] = ((segundos_j1 % 60) % 10) + 48;
 
 				msg = lcd_msg_from_string(msg_tiempo);
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 				msg = lcd_msg_second_line();
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
-				if (get_side_to_move() == 1)
-					xQueueSend(lcd_queue, (void* )&msg_flecha, portMAX_DELAY);
+				if (get_side_to_move() == 1) {
+					msg_tiempo[0] = '-';
+					msg_tiempo[1] = '>';
+				} else {
+					msg_tiempo[0] = ' ';
+					msg_tiempo[1] = ' ';
+				}
 
-				msg_tiempo[1] = '2';
-				msg_tiempo[5] = (segundos_j2 / 600) + 48;
-				msg_tiempo[6] = ((segundos_j2 / 60) % 10) + 48;
-				msg_tiempo[8] = ((segundos_j2 % 100) / 10) + 48;
-				msg_tiempo[9] = (segundos_j2 % 10) + 48;
+				msg_tiempo[4] = '2';
+				msg_tiempo[8] = ((segundos_j2 / 60) / 10) + 48;
+				msg_tiempo[9] = ((segundos_j2 / 60) % 10) + 48;
+				msg_tiempo[11] = ((segundos_j2 % 60) / 10) + 48;
+				msg_tiempo[12] = ((segundos_j2 % 60) % 10) + 48;
 
 				msg = lcd_msg_from_string(msg_tiempo);
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
@@ -220,13 +239,15 @@ void t_userLoop(void*) {
 		}
 
 		xSemaphoreGive(ws2812_sem);
-		vTaskDelayUntil(&xLastWakeTime, xFrequency);
+		vTaskDelayUntil(&xLastWakeTime, xPeriod);
 	}
 }
 
 static void ME_general(uint8_t button) {
-	static uint8_t sub_estado = 0;
+	static int8_t sub_estado = 0;
 	LCDQueueItem_t msg = { 0 };
+
+	uint8_t aux_button = 0;
 
 	switch (estado) {
 	case ME_GENERAL_RESET:
@@ -244,6 +265,7 @@ static void ME_general(uint8_t button) {
 
 		if (button == 3) {
 			estado = ME_GENERAL_SELECCION_MODO;
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
 
 		break;
@@ -270,8 +292,10 @@ static void ME_general(uint8_t button) {
 					sub_estado == 0 ?
 							ME_GENERAL_SELECCION_TIEMPO : ME_GENERAL_JVM;
 			sub_estado = 0;
-		} else {
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		} else if (button != 0) {
 			sub_estado = !sub_estado;
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
 		break;
 
@@ -308,16 +332,19 @@ static void ME_general(uint8_t button) {
 
 		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
-		if (button == 1) {
+		if (button == 2) {
 			sub_estado--;
 			if (sub_estado < 0)
 				sub_estado = 5;
-		} else if (button == 2) {
+
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		} else if (button == 1) {
 			sub_estado++;
 			if (sub_estado > 5)
 				sub_estado = 0;
-		}
-		if (button == 3) {
+
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		} else if (button == 3) {
 			estado = ME_GENERAL_JVJ;
 			switch (sub_estado) {
 			case 0:
@@ -352,13 +379,13 @@ static void ME_general(uint8_t button) {
 				break;
 			}
 			sub_estado = 0;
+			mostrar_tiempo = 1;
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
 		break;
 
 	case ME_GENERAL_JVJ:
 		modo_de_juego = 1;
-
-		contar = get_error_position();
 
 		if (sub_estado == 0) {
 			msg = lcd_msg_clear();
@@ -387,13 +414,18 @@ static void ME_general(uint8_t button) {
 
 		if (button == 3) {
 			if (sub_estado == 1) {
+				user_init();
 				estado = ME_GENERAL_RESET;
 			} else {
 				mostrar_tiempo = 1;
 
 			}
-		} else {
+
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		} else if (button != 0) {
 			sub_estado = !sub_estado;
+
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
 		break;
 	case ME_GENERAL_JVM:
@@ -416,6 +448,8 @@ static void ME_general(uint8_t button) {
 		if (button == 3) {
 			user_init();
 			estado = ME_GENERAL_RESET;
+
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
 		break;
 	}

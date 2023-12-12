@@ -26,8 +26,6 @@ Core/Src/user_main.o: ../Core/Src/user_main.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Core/Inc/main.h \
@@ -53,7 +51,8 @@ Core/Src/user_main.o: ../Core/Src/user_main.c \
  ../Core/Inc/reed/reed.h ../Core/Inc/engine/engine.h \
  ../Core/Inc/engine/moves.h ../Core/Inc/lighting/lighting.h \
  ../Core/Inc/lighting/../engine/engine.h ../Core/Inc/game.h \
- ../Core/Inc/lighting/lighting.h ../Core/Inc/characterLCD.h
+ ../Core/Inc/lighting/lighting.h ../Core/Inc/movement.h \
+ ../Core/Inc/characterLCD.h
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -81,8 +80,6 @@ Core/Src/user_main.o: ../Core/Src/user_main.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Core/Inc/main.h:
@@ -115,4 +112,5 @@ Core/Src/user_main.o: ../Core/Src/user_main.c \
 ../Core/Inc/lighting/../engine/engine.h:
 ../Core/Inc/game.h:
 ../Core/Inc/lighting/lighting.h:
+../Core/Inc/movement.h:
 ../Core/Inc/characterLCD.h:

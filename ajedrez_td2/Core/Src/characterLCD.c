@@ -24,11 +24,11 @@ void lcd_init(void) {
 	lcd_send_cmd(0x08); //Display on/off control --> D=0,C=0, B=0  ---> display off
 	vTaskDelay(1);
 	lcd_send_cmd(0x01);  // clear display
-	vTaskDelay(1);
-	vTaskDelay(1);
+	vTaskDelay(10);
 	lcd_send_cmd(0x06); //Entry mode set --> I/D = 1 (increment cursor) & S = 0 (no shift)
 	vTaskDelay(1);
 	lcd_send_cmd(0x0C); //Display on/off control --> D = 1, C and B = 0. (Cursor and blink, last two bits)
+	vTaskDelay(1);
 }
 
 void lcd_send_cmd(char cmd) {
@@ -78,7 +78,7 @@ LCDQueueItem_t lcd_msg_clear(void) {
 	LCDQueueItem_t msg = { 0 };
 	msg.type = CMD_TYPE;
 	msg.data[0] = 0x01;
-	msg.delay = 3;
+	msg.delay = 10;
 	return msg;
 }
 LCDQueueItem_t lcd_msg_first_line(void){
