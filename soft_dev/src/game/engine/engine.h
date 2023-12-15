@@ -7,6 +7,15 @@ Solo se deben llamar funciones de este header de afuera de la carpeta "engine"
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#define PAWN_SCORE 1
+#define BISHOP_SCORE 3
+#define KNIGHT_SCORE 3
+#define ROOK_SCORE 5
+#define QUEEN_SCORE 9
+
+
+
+
 
 #include "moves.h"
 #include "board.h"
@@ -29,6 +38,9 @@ int engine_list_moves(move_t * moves);
 
 
 char engine_get_piece(uint8_t square);
+
+
+move_t engine_search();
 
 #endif
 

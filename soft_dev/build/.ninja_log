@@ -1,0 +1,12 @@
+# ninja log v5
+1	84	1701924276117465095	CMakeFiles/engine_test.dir/src/main.c.o	2816edcbaf2c277
+1	77	1702586522274625340	CMakeFiles/engine_test.dir/src/game/game.c.o	6e9522933b977b73
+118	186	1702586522381292566	bin/engine_test	588ac039acd85974
+2	102	1702067446611723366	CMakeFiles/engine_test.dir/src/pc/pc.c.o	81640581d7bc85
+8	115	1701924276147465185	CMakeFiles/engine_test.dir/src/game/engine/board.c.o	475a25527d828ef0
+7	118	1702586522314625550	CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o	9f7f1b06f955eb1
+1	91	1702586522287958743	CMakeFiles/engine_test.dir/src/game/movement.c.o	c48c0e37fea0b41b
+3	83	1702586522277958691	CMakeFiles/engine_test.dir/src/game/engine/moves.c.o	b8e9d46cf2fd39e1
+6	107	1702586522301292147	CMakeFiles/engine_test.dir/src/game/engine/engine.c.o	d5cdbc175d238ee
+3	101	1702067446611723366	CMakeFiles/engine_test.dir/src/pc/graphics.c.o	1ba23423eba862c5
+84	225	1701924276257465515	CMakeFiles/engine_test.dir/src/game/engine/interface.c.o	372e956deed55ad

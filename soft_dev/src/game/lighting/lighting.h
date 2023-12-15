@@ -8,6 +8,11 @@
 #define LIGHTING_LIFTED_STATE 1
 #define LIGHTING_ERROR_STATE 2
 #define LIGHTING_CAPTURE_STATE 3
+#define LIGHTING_CPU_THINKING_STATE 4
+#define LIGHTING_CPU_LIFT_FROM_STATE 5
+#define LIGHTING_CPU_LIFT_CAPTURED_STATE 6
+#define LIGHTING_CPU_PLACE_TO_STATE 7
+
 
 typedef struct{
     uint8_t r;
@@ -38,7 +43,8 @@ void lighting_refresh();
 
 void lighting_set_state(char state);
 void lighting_piece_lifted_square(uint8_t square);
-void set_valid_moves(move_t * moves, int total_valid_moves);
+void lighting_set_cpu_movement(uint8_t from, uint8_t to);
+void lighting_set_valid_moves(move_t * moves, int total_valid_moves);
 
 void lighting_set_output(led_color led_output_array[8][8]);
 

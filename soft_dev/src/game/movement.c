@@ -73,6 +73,12 @@ int get_lifted_moves(uint8_t square_lifted, move_t * valid_moves, int total_vali
 int total_valid_moves;
 move_t valid_moves[255];
 
+color_t cpu_player = BLACK;
+
+move_t cpu_movement;
+
+char capturing = 0;
+
 void movement_fsm(){
 
     piece_change_t piece_change = get_last_sensor_change();
@@ -98,7 +104,7 @@ void movement_fsm(){
             else{
                 movement_state = PIECE_LIFTED_STATE;
                 lighting_piece_lifted_square(square_lifted);
-                set_valid_moves(valid_moves, total_valid_moves);
+                lighting_set_valid_moves(valid_moves, total_valid_moves);
                 lighting_set_state(LIGHTING_LIFTED_STATE);                
             }
         }
@@ -116,8 +122,14 @@ void movement_fsm(){
             char move_ok = engine_move_piece(move_played);
 
             if(move_ok){
-                movement_state = WAIT_STATE;
-                lighting_set_state(LIGHTING_IDLE_STATE);
+                if(cpu_player == COLOR_EMPTY){
+                    movement_state = WAIT_STATE;
+                    lighting_set_state(LIGHTING_IDLE_STATE);
+                }
+                else{
+                    movement_state = CPU_THINKING_STATE;
+                    lighting_set_state(LIGHTING_CPU_THINKING_STATE);
+                }
             }
             else{
                 movement_state = ERROR_STATE;
@@ -134,7 +146,7 @@ void movement_fsm(){
                     captured_piece_is_valid = 1;
                     lighting_piece_lifted_square(piece_change.square_affected);
                     lighting_set_state(LIGHTING_CAPTURE_STATE); 
-                    engine_move_piece(valid_moves[i]);
+                    //engine_move_piece(valid_moves[i]);
                     break;
                 }
             }
@@ -156,7 +168,59 @@ void movement_fsm(){
         }
         break;
 
+    case CPU_THINKING_STATE:
+        cpu_movement = engine_search();
+        movement_state = CPU_LIFT_FROM_STATE;
+        lighting_set_cpu_movement(cpu_movement.from, cpu_movement.to);
+        lighting_set_state(LIGHTING_CPU_LIFT_FROM_STATE);
+        /*
+        if(engine_finished()){
+            
+        }
+        */
+        break;
 
+    case CPU_LIFT_FROM_STATE:
+
+        //Player must lift cpu piece
+        if(piece_change.piece_action == REMOVED){
+            if(piece_change.square_affected == cpu_movement.from){
+                if(engine_get_piece(cpu_movement.to) != PIECE_EMPTY){
+                    movement_state = CPU_LIFT_CAPTURED_STATE;
+                    lighting_set_state(LIGHTING_CPU_LIFT_CAPTURED_STATE);
+                }
+                else{
+                    lighting_set_state(LIGHTING_CPU_PLACE_TO_STATE);
+                    movement_state = CPU_PLACE_TO_STATE;
+                }
+            }
+        }
+        break;
+
+    case CPU_LIFT_CAPTURED_STATE:
+        //Player must lift cpu piece
+        if(piece_change.piece_action == REMOVED){
+            if(piece_change.square_affected == cpu_movement.to){
+                movement_state = CPU_PLACE_TO_STATE;
+                lighting_set_state(LIGHTING_CPU_PLACE_TO_STATE);
+            }
+        }
+        break;
+
+    case CPU_PLACE_TO_STATE:
+        //Player must lift cpu piece
+        if(piece_change.piece_action == PLACED){
+            if(piece_change.square_affected == cpu_movement.to){
+                movement_state = WAIT_STATE;
+                engine_move_piece(cpu_movement);
+                lighting_set_state(LIGHTING_IDLE_STATE);
+            }
+        }
+        break;
+
+    case GAME_FINISHED_STATE:
+        
+    break;
 
     default:
         break;

@@ -8,6 +8,11 @@
 #define PIECE_CAPTURED_STATE 2
 #define ERROR_STATE 3
 #define CAPUTRE_LIEFTED_STATE 4
+#define CPU_THINKING_STATE 5
+#define CPU_LIFT_FROM_STATE 6
+#define CPU_LIFT_CAPTURED_STATE 7
+#define CPU_PLACE_TO_STATE 8
+#define GAME_FINISHED_STATE 9
 
 typedef enum enum_piece_change_type{
     NONE = 0,
