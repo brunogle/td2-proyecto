@@ -45,5 +45,7 @@ target_sources(engine_test
         src/game/engine/moves.c
         src/game/engine/board.c
         src/game/engine/engine.c
+        src/game/engine/attacks.c
         src/game/lighting/lighting.c
+        
 )

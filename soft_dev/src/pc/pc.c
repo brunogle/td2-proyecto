@@ -30,6 +30,7 @@ void draw() {
 
 piece_t get_promotion()
 {
+    /*
     printf("Ingrese numero de pieza para seleccionar la promocion:\n");
     printf("Caballo: %d\n", KNIGHT);
     printf("Alfil: %d\n", BISHOP);
@@ -41,4 +42,7 @@ piece_t get_promotion()
     scanf("%u", &prom);
     
     return (piece_t) prom;
+    */
+
+    return QUEEN;
 }

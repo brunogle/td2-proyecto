@@ -1,7 +1,10 @@
 #include "movement.h"
+#include "engine/attacks.h"
 #include "engine/board.h"
 #include "engine/engine.h"
 #include "lighting/lighting.h"
+
+#include <stdio.h>
 
 char previous_sensor_state[8];
 char new_sensor_state[8];
@@ -93,8 +96,10 @@ void movement_fsm(){
         if(piece_change.piece_action == REMOVED){
             movement_state = PIECE_LIFTED_STATE;
             square_lifted = piece_change.square_affected;
-            total_valid_moves = engine_list_moves(valid_moves);
-            
+            total_valid_moves = engine_list_moves(valid_moves, 1);
+
+
+
             lifted_piece_valid_moves = get_lifted_moves(square_lifted, valid_moves, total_valid_moves);
 
             if(lifted_piece_valid_moves == 0){
@@ -122,13 +127,22 @@ void movement_fsm(){
             char move_ok = engine_move_piece(move_played);
 
             if(move_ok){
-                if(cpu_player == COLOR_EMPTY){
-                    movement_state = WAIT_STATE;
-                    lighting_set_state(LIGHTING_IDLE_STATE);
+                total_valid_moves = engine_list_moves(valid_moves, 1);
+                if(total_valid_moves == 0){
+                    lighting_set_winner(1 - engine_game_state.side_to_move);
+                    lighting_set_state(LIGHTING_GAME_FINISHED_STATE);
+                    movement_state = GAME_FINISHED_STATE;
                 }
                 else{
-                    movement_state = CPU_THINKING_STATE;
-                    lighting_set_state(LIGHTING_CPU_THINKING_STATE);
+                    if(cpu_player == COLOR_EMPTY){
+                        movement_state = WAIT_STATE;
+                        printf("Eval: %d\n", engine_negamax_seach(engine_game_state, 1, MIN_EVAL, MAX_EVAL));
+                        lighting_set_state(LIGHTING_IDLE_STATE);
+                    }
+                    else{
+                        movement_state = CPU_THINKING_STATE;
+                        lighting_set_state(LIGHTING_CPU_THINKING_STATE);
+                    }
                 }
             }
             else{
@@ -138,7 +152,7 @@ void movement_fsm(){
         }
         else if(piece_change.piece_action == REMOVED){
 
-            total_valid_moves = engine_list_moves(valid_moves);
+            total_valid_moves = engine_list_moves(valid_moves, 1);
 
             char captured_piece_is_valid = 0;
             for(int i = 0; i < total_valid_moves; i++){
@@ -219,7 +233,7 @@ void movement_fsm(){
         break;
 
     case GAME_FINISHED_STATE:
-        
+        lighting_set_state(GAME_FINISHED_STATE);
     break;
 
     default:

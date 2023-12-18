@@ -214,3 +214,4 @@ int generate_moves(game_state_t * state, move_t * moves){
     }
     return n_moves;
 }
+

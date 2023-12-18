@@ -55,6 +55,12 @@
 },
 {
   "directory": "/home/bruno/dev/utn/td2/td2-proyecto/soft_dev/build",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/engine_test.dir/src/game/engine/attacks.c.o -c /home/bruno/dev/utn/td2/td2-proyecto/soft_dev/src/game/engine/attacks.c",
+  "file": "/home/bruno/dev/utn/td2/td2-proyecto/soft_dev/src/game/engine/attacks.c",
+  "output": "CMakeFiles/engine_test.dir/src/game/engine/attacks.c.o"
+},
+{
+  "directory": "/home/bruno/dev/utn/td2/td2-proyecto/soft_dev/build",
   "command": "/usr/bin/gcc -g -o CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o -c /home/bruno/dev/utn/td2/td2-proyecto/soft_dev/src/game/lighting/lighting.c",
   "file": "/home/bruno/dev/utn/td2/td2-proyecto/soft_dev/src/game/lighting/lighting.c",
   "output": "CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o"

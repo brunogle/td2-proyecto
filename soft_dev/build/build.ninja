@@ -103,6 +103,12 @@ build CMakeFiles/engine_test.dir/src/game/engine/engine.c.o: C_COMPILER__engine_
   OBJECT_DIR = CMakeFiles/engine_test.dir
   OBJECT_FILE_DIR = CMakeFiles/engine_test.dir/src/game/engine
 
+build CMakeFiles/engine_test.dir/src/game/engine/attacks.c.o: C_COMPILER__engine_test_unscanned_Debug /home/bruno/dev/utn/td2/td2-proyecto/soft_dev/src/game/engine/attacks.c || cmake_object_order_depends_target_engine_test
+  DEP_FILE = CMakeFiles/engine_test.dir/src/game/engine/attacks.c.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/engine_test.dir
+  OBJECT_FILE_DIR = CMakeFiles/engine_test.dir/src/game/engine
+
 build CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o: C_COMPILER__engine_test_unscanned_Debug /home/bruno/dev/utn/td2/td2-proyecto/soft_dev/src/game/lighting/lighting.c || cmake_object_order_depends_target_engine_test
   DEP_FILE = CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o.d
   FLAGS = -g
@@ -117,7 +123,7 @@ build CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o: C_COMPILER__eng
 #############################################
 # Link the executable bin/engine_test
 
-build bin/engine_test: C_EXECUTABLE_LINKER__engine_test_Debug CMakeFiles/engine_test.dir/src/main.c.o CMakeFiles/engine_test.dir/src/pc/pc.c.o CMakeFiles/engine_test.dir/src/pc/graphics.c.o CMakeFiles/engine_test.dir/src/game/movement.c.o CMakeFiles/engine_test.dir/src/game/game.c.o CMakeFiles/engine_test.dir/src/game/engine/board.c.o CMakeFiles/engine_test.dir/src/game/engine/interface.c.o CMakeFiles/engine_test.dir/src/game/engine/moves.c.o CMakeFiles/engine_test.dir/src/game/engine/engine.c.o CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o
+build bin/engine_test: C_EXECUTABLE_LINKER__engine_test_Debug CMakeFiles/engine_test.dir/src/main.c.o CMakeFiles/engine_test.dir/src/pc/pc.c.o CMakeFiles/engine_test.dir/src/pc/graphics.c.o CMakeFiles/engine_test.dir/src/game/movement.c.o CMakeFiles/engine_test.dir/src/game/game.c.o CMakeFiles/engine_test.dir/src/game/engine/board.c.o CMakeFiles/engine_test.dir/src/game/engine/interface.c.o CMakeFiles/engine_test.dir/src/game/engine/moves.c.o CMakeFiles/engine_test.dir/src/game/engine/engine.c.o CMakeFiles/engine_test.dir/src/game/engine/attacks.c.o CMakeFiles/engine_test.dir/src/game/lighting/lighting.c.o
   FLAGS = -g
   LINK_FLAGS = -pg
   LINK_LIBRARIES = -Wl,-rpath,/home/bruno/dev/utn/td2/td2-proyecto/soft_dev/lib/p8g  -lp8g

@@ -1,32 +1,63 @@
 #include "engine.h"
 
+#include "attacks.h"
 #include "board.h"
 #include "interface.h"
+#include "moves.h"
 #include <stdint.h>
 #include <time.h>
 #include <stdlib.h>
 
-game_state_t game_state;
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
+game_state_t engine_game_state;
 
 const int8_t engine_piece_scores[] = {0, QUEEN_SCORE, ROOK_SCORE, BISHOP_SCORE, KNIGHT_SCORE, PAWN_SCORE, 0};
 
 void engine_reset(){
-    load_fen(&game_state, STARTFEN);
+    load_fen(&engine_game_state, STARTFEN);
 }
 
 char engine_move_piece(move_t move){
-    return make_move(&game_state, move, 1);
+    return make_move(&engine_game_state, move, 1);
 }
 
-int engine_list_moves(move_t * moves){
-    return generate_moves(&game_state, moves);
+int engine_list_moves(move_t * moves, char only_legal){
+    if(only_legal){
+        move_t pseudo_legal_moves[128];
+        game_state_t test_game_state = engine_game_state;
+
+        int num_pseudo_legal = generate_moves(&engine_game_state, pseudo_legal_moves);
+
+        
+
+
+        int num_legal = 0;
+        for(int i = 0; i < num_pseudo_legal; i++){
+            test_game_state = engine_game_state;
+            make_move(&test_game_state, pseudo_legal_moves[i], 0);
+            uint8_t king_pos = 0;
+            while(!(test_game_state.pieces[king_pos] == KING && test_game_state.color[king_pos] == engine_game_state.side_to_move)){
+                king_pos++;
+            }
+            if(!is_attacked(&test_game_state, test_game_state.side_to_move, king_pos)){
+                moves[num_legal] = pseudo_legal_moves[i];
+                num_legal++;
+            }
+        }
+        return num_legal;
+    }
+    else{
+        return generate_moves(&engine_game_state, moves);
+    }
 }
 
 char engine_get_piece(uint8_t square){
-    return game_state.pieces[square];
+    return engine_game_state.pieces[square];
 }
 
-int engine_eval(){
+int engine_eval(game_state_t game_state){
 
     //
     int score = 0;
@@ -48,11 +79,12 @@ int engine_eval(){
 
     
 
-    if(game_state.side_to_move == WHITE)
+    if(game_state.side_to_move == BLACK)
         return score;
     else
         return -score;
 }
+
 
 int engine_pv_search(int alpha, int beta, int depth){
     
@@ -62,13 +94,52 @@ int engine_pv_search(int alpha, int beta, int depth){
 
 }
 
+int engine_negamax_seach(game_state_t game_state, int depth, int alpha, int beta){
+    if(depth == 0)
+        return engine_eval(game_state);
+    
+    move_t moves[128];
+
+    int num_moves = engine_list_moves(moves, 1);
+
+    if(num_moves == 0){
+        return MIN_EVAL;
+    }
+
+    //Idealmente ordenar moviminetos
+    int value = MIN_EVAL;
+    for(int i = 0; i < num_moves; i++){
+        move_t test_move = moves[i];
+        game_state_t test_game_state = game_state;
+        make_move(&test_game_state, test_move, 0);
+        value = MAX(value, engine_negamax_seach(test_game_state, depth - 1, -beta, -alpha));
+        alpha = MAX(alpha, value);
+        if(alpha >= beta)
+            break;
+    }
+    return value;
+}
 move_t search_valid_moves[255];
 
 
 move_t engine_search(){
     //Placeholder for actual search
-    int num_moves = generate_moves(&game_state, search_valid_moves);
+    int num_moves = generate_moves(&engine_game_state, search_valid_moves);
 
-    return search_valid_moves[rand()%num_moves];
+    move_t best_move;
+    int best_score = MIN_EVAL;
+
+    for(int i = 0; i < num_moves; i++){
+        move_t test_move = search_valid_moves[i];
+        game_state_t test_game_state = engine_game_state;
+        make_move(&test_game_state, test_move, 0);
+        int score = -engine_negamax_seach(test_game_state, 3, MIN_EVAL, MAX_EVAL);
+        if(score > best_score){
+            best_score = score;
+            best_move = search_valid_moves[i];
+        }
+    }
+
+    return best_move;
 
 }

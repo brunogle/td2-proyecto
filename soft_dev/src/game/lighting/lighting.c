@@ -1,6 +1,7 @@
 #include "lighting.h"
 #include "../engine/engine.h"
 #include "../movement.h"
+#include "../engine/attacks.h"
 #include <stdint.h>
 
 
@@ -13,6 +14,8 @@ char lighting_state = LIGHTING_IDLE_STATE;
 
 //Array donde se escribe la salida
 led_color * output_array = (led_color *)0;
+
+color_t game_finished_winner;
 
 
 //Setter para el array de salida
@@ -47,7 +50,7 @@ int paint_valid_moves(uint8_t square_lifted, move_t * valid_moves, int total_val
 
     int lifted_piece_valid_moves = 0;
 
-    total_valid_moves = engine_list_moves(valid_moves);
+    total_valid_moves = engine_list_moves(valid_moves, 1);
     for(int i = 0; i < total_valid_moves; i++){
         if(valid_moves[i].from == square_lifted){
             set_color(SQ2ROW(valid_moves[i].to), SQ2COL(valid_moves[i].to), VALID_ID);
@@ -84,6 +87,17 @@ char paint_capture(int rank, int file){
     return 1;
 }
 
+char paint_winner(){
+    for (int rank = 0; rank < 8; rank++) {
+        for (int file = 0; file < 8; file++) {
+            if(rank < 4 == (game_finished_winner == WHITE))
+                set_color(rank, file, VALID_ID);
+            else
+                set_color(rank, file, INVALID_ID);
+        }
+    }
+}
+
 uint8_t square_lifted_lighting;
 move_t * valid_moves_lighting;
 int total_valid_moves_lighting;
@@ -94,6 +108,10 @@ uint8_t square_cpu_to_lighting;
 
 void lighting_set_state(char state){
     lighting_state = state;
+}
+
+void lighting_set_winner(char winner){
+    game_finished_winner = winner;
 }
 
 void lighting_piece_lifted_square(uint8_t square){
@@ -114,6 +132,15 @@ void lighting_refresh(){
     switch (lighting_state) {
         case LIGHTING_IDLE_STATE:
             paint_board();
+            /*
+            for(int x = 0; x < 8; x++){
+                for(int y = 0; y < 8; y++){
+                    if(is_attacked(&game_state, WHITE, COORD2SQ(y, x))){
+                        set_color(y, x, INVALID_ID);
+                    }
+                }                
+            }
+            */
         break;
 
         case LIGHTING_LIFTED_STATE:
@@ -149,6 +176,10 @@ void lighting_refresh(){
         case LIGHTING_CPU_PLACE_TO_STATE:
             paint_board();
             set_color(SQ2ROW(square_cpu_to_lighting), SQ2COL(square_cpu_to_lighting), VALID_ID);
+        break;
+
+        case LIGHTING_GAME_FINISHED_STATE:
+            paint_winner();
         break;
     }
 }
