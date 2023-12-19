@@ -49,7 +49,10 @@ int make_move(game_state_t * state, move_t move, uint8_t safe){
 
     if(move.promotion != 0)
     {
-        place_piece(state, check_promotion(), state->color[move.from], move.to);
+    	if(safe != 0)
+    		place_piece(state, check_promotion(), state->color[move.from], move.to);
+    	else
+    		place_piece(state, QUEEN, state->color[move.from], move.to);
     }
     else
     {
