@@ -13,6 +13,7 @@
 "./Core/Src/tareas.o"
 "./Core/Src/user_main.o"
 "./Core/Src/util.o"
+"./Core/Src/engine/attacks.o"
 "./Core/Src/engine/board.o"
 "./Core/Src/engine/engine.o"
 "./Core/Src/engine/interface.o"

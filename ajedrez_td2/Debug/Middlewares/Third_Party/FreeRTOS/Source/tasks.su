@@ -31,7 +31,7 @@
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3266:6:vTaskInternalSetTimeOutState	16	static
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3274:12:xTaskCheckForTimeOut	40	static,ignoring_inline_asm
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3337:6:vTaskMissedYield	4	static
-../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3392:8:prvIdleTask	16	static,ignoring_inline_asm
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3392:8:prvIdleTask	16	static
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3607:13:prvInitialiseTaskLists	16	static
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3639:13:prvCheckTasksWaitingTermination	16	static
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3887:14:prvDeleteTCB	24	static,ignoring_inline_asm

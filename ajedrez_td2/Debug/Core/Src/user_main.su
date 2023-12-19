@@ -1,5 +1,7 @@
-../Core/Src/user_main.c:33:6:user_init	8	static
-../Core/Src/user_main.c:41:9:get_side_to_move	4	static
-../Core/Src/user_main.c:46:9:get_error_position	4	static
-../Core/Src/user_main.c:51:9:get_promotion	72	static
-../Core/Src/user_main.c:125:6:user_loop	8	static
+../Core/Src/user_main.c:35:6:user_init	8	static
+../Core/Src/user_main.c:43:9:get_side_to_move	4	static
+../Core/Src/user_main.c:50:9:get_finished_state	4	static
+../Core/Src/user_main.c:55:6:set_cpu_player	16	static
+../Core/Src/user_main.c:60:9:get_error_position	4	static
+../Core/Src/user_main.c:65:9:get_promotion	72	static
+../Core/Src/user_main.c:139:6:user_loop	8	static

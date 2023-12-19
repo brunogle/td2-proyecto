@@ -8,7 +8,7 @@ extern I2C_HandleTypeDef hi2c1;
 //Inicializa el display.
 void lcd_init(void) {
 	// 4 bit initialization
-	vTaskDelay(50);  // wait for >40ms
+	vTaskDelay(500);  // wait for >40ms
 	lcd_send_cmd(0x30);
 	vTaskDelay(5);  // wait for >4.1ms
 	lcd_send_cmd(0x30);

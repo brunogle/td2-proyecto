@@ -5,18 +5,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/engine/attacks.c \
 ../Core/Src/engine/board.c \
 ../Core/Src/engine/engine.c \
 ../Core/Src/engine/interface.c \
 ../Core/Src/engine/moves.c 
 
 OBJS += \
+./Core/Src/engine/attacks.o \
 ./Core/Src/engine/board.o \
 ./Core/Src/engine/engine.o \
 ./Core/Src/engine/interface.o \
 ./Core/Src/engine/moves.o 
 
 C_DEPS += \
+./Core/Src/engine/attacks.d \
 ./Core/Src/engine/board.d \
 ./Core/Src/engine/engine.d \
 ./Core/Src/engine/interface.d \
@@ -30,7 +33,7 @@ Core/Src/engine/%.o Core/Src/engine/%.su Core/Src/engine/%.cyclo: ../Core/Src/en
 clean: clean-Core-2f-Src-2f-engine
 
 clean-Core-2f-Src-2f-engine:
-	-$(RM) ./Core/Src/engine/board.cyclo ./Core/Src/engine/board.d ./Core/Src/engine/board.o ./Core/Src/engine/board.su ./Core/Src/engine/engine.cyclo ./Core/Src/engine/engine.d ./Core/Src/engine/engine.o ./Core/Src/engine/engine.su ./Core/Src/engine/interface.cyclo ./Core/Src/engine/interface.d ./Core/Src/engine/interface.o ./Core/Src/engine/interface.su ./Core/Src/engine/moves.cyclo ./Core/Src/engine/moves.d ./Core/Src/engine/moves.o ./Core/Src/engine/moves.su
+	-$(RM) ./Core/Src/engine/attacks.cyclo ./Core/Src/engine/attacks.d ./Core/Src/engine/attacks.o ./Core/Src/engine/attacks.su ./Core/Src/engine/board.cyclo ./Core/Src/engine/board.d ./Core/Src/engine/board.o ./Core/Src/engine/board.su ./Core/Src/engine/engine.cyclo ./Core/Src/engine/engine.d ./Core/Src/engine/engine.o ./Core/Src/engine/engine.su ./Core/Src/engine/interface.cyclo ./Core/Src/engine/interface.d ./Core/Src/engine/interface.o ./Core/Src/engine/interface.su ./Core/Src/engine/moves.cyclo ./Core/Src/engine/moves.d ./Core/Src/engine/moves.o ./Core/Src/engine/moves.su
 
 .PHONY: clean-Core-2f-Src-2f-engine
 

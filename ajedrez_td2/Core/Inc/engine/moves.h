@@ -25,6 +25,7 @@
 
 #include "board.h"
 
+extern int8_t move_directions[5][8];
 
 int make_move(game_state_t * state, move_t move, uint8_t safe);
 

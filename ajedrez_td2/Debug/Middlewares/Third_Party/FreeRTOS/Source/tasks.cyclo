@@ -22,7 +22,7 @@
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:2358:7:pcTaskGetName	3
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:2609:12:xTaskCatchUpTicks	2
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:2707:12:xTaskIncrementTick	11
-../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:2989:6:vTaskSwitchContext	4
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:2989:6:vTaskSwitchContext	5
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3064:6:vTaskPlaceOnEventList	2
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3081:6:vTaskPlaceOnUnorderedEventList	3
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3138:12:xTaskRemoveFromEventList	4
@@ -31,7 +31,7 @@
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3266:6:vTaskInternalSetTimeOutState	1
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3274:12:xTaskCheckForTimeOut	7
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3337:6:vTaskMissedYield	1
-../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3392:8:prvIdleTask	2
+../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3392:8:prvIdleTask	1
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3607:13:prvInitialiseTaskLists	2
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3639:13:prvCheckTasksWaitingTermination	2
 ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c:3887:14:prvDeleteTCB	4

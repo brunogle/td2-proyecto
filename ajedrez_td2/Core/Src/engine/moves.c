@@ -99,12 +99,12 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].promotion = 0;
                         if(SQ2ROW(moves[n_moves].to) == ROW_8)
                             moves[n_moves].promotion = 1;
-                        n_moves++;
+                        if(n_moves++ >= 255) break;
                         if(SQ2ROW(square) == ROW_2 && state->pieces[square + DIR_NN] == PIECE_EMPTY){//Peon blanco sin mover con lugar vacio
                             moves[n_moves].from = square;
                             moves[n_moves].to = square + DIR_NN;
                             moves[n_moves].promotion = 0;   
-                            n_moves++;
+                            if(n_moves++ >= 255) break;
                         }
                     }
                 }
@@ -118,7 +118,7 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].promotion = 0;
                         if(SQ2ROW(moves[n_moves].to) == ROW_8)
                             moves[n_moves].promotion = 1;
-                        n_moves++;    
+                        if(n_moves++ >= 255) break;
                     }
                 }
                 if(IS_VALID(square + DIR_NW)){
@@ -128,7 +128,7 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].promotion = 0;
                         if(SQ2ROW(moves[n_moves].to) == ROW_8)
                             moves[n_moves].promotion = 1;
-                        n_moves++;    
+                        if(n_moves++ >= 255) break;
                     }
                 }
             } 
@@ -140,12 +140,12 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].promotion = 0;
                         if(SQ2ROW(moves[n_moves].to) == ROW_1)
                             moves[n_moves].promotion = 1;
-                        n_moves++;
+                        if(n_moves++ >= 255) break;
                         if(SQ2ROW(square) == ROW_7 && state->pieces[square + DIR_SS] == PIECE_EMPTY){ //Peon negro sin mover
                             moves[n_moves].from = square;
                             moves[n_moves].to = square + DIR_SS;
                             moves[n_moves].promotion = 0;
-                            n_moves++;                    
+                            if(n_moves++ >= 255) break;
                         }
                     }
                 }
@@ -159,7 +159,7 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].promotion = 0;
                         if(SQ2ROW(moves[n_moves].to) == ROW_1)
                             moves[n_moves].promotion = 1;
-                        n_moves++;    
+                        if(n_moves++ >= 255) break;
                     }
                 }
                 if(IS_VALID(square + DIR_SW)){
@@ -169,7 +169,7 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].promotion = 0;
                         if(SQ2ROW(moves[n_moves].to) == ROW_1)
                             moves[n_moves].promotion = 1;
-                        n_moves++;    
+                        if(n_moves++ >= 255) break;
                     }
                 }
             }
@@ -191,14 +191,14 @@ int generate_moves(game_state_t * state, move_t * moves){
                         moves[n_moves].from = square;
                         moves[n_moves].to = new_square;
                         moves[n_moves].promotion = 0;
-                        n_moves++;
+                        if(n_moves++ >= 255) break;
                     }
                     else{
                         if(state->color[new_square] != state->side_to_move){ //Lugar con pieza enemiga, se puede capturar
                             moves[n_moves].from = square;
                             moves[n_moves].to = new_square;
                             moves[n_moves].promotion = 0;
-                            n_moves++;    
+                            if(n_moves++ >= 255) break;
                         }
                         break; //Si estaba deslizando, ya no puede avanzar mas.                        
 

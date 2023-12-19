@@ -37,8 +37,6 @@ uint8_t modo_de_juego = 0, mostrar_tiempo = 0, contar = 0, actualizar_display =
 
 uint32_t segundos_j1 = 0, segundos_j2 = 0, incremento = 0;
 
-void tareas_error_handler(uint8_t);
-
 void t_Timer() {
 	TickType_t xLastWakeTime;
 	const TickType_t xPeriod = 1000; //1seg
@@ -175,6 +173,7 @@ void t_userLoop(void*) {
 		case 0:
 			break;
 		case 1:
+			set_cpu_player(0);
 			user_loop(); // FSM CHESS
 
 			// Detecto si hubo un cambio de turno para sumar incremento de tiempo
@@ -189,8 +188,6 @@ void t_userLoop(void*) {
 			//Imprimo tiempos si tengo que hacerlo
 			if (actualizar_display && mostrar_tiempo) {
 				actualizar_display = 0;
-				//msg = lcd_msg_clear();
-				//xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 				msg = lcd_msg_first_line();
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
@@ -231,15 +228,28 @@ void t_userLoop(void*) {
 				msg = lcd_msg_from_string(msg_tiempo);
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 			}
+			if (get_finished_state()) {
+				modo_de_juego = 3;
+				button = 4;
+				xQueueSend(buttons_queue, &button, 0);
+			}
+
 			break;
 		case 2:
+			user_loop();
+			if (get_finished_state()) {
+				modo_de_juego = 3;
+				button = 4;
+				xQueueSend(buttons_queue, &button, 0);
+			}
+
 			break;
 		case 3:
 			break;
 		}
 
 		xSemaphoreGive(ws2812_sem);
-		vTaskDelayUntil(&xLastWakeTime, xPeriod);
+		vTaskDelay(33);
 	}
 }
 
@@ -332,13 +342,13 @@ static void ME_general(uint8_t button) {
 
 		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
 
-		if (button == 2) {
+		if (button == 1) {
 			sub_estado--;
 			if (sub_estado < 0)
 				sub_estado = 5;
 
 			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
-		} else if (button == 1) {
+		} else if (button == 2) {
 			sub_estado++;
 			if (sub_estado > 5)
 				sub_estado = 0;
@@ -386,6 +396,7 @@ static void ME_general(uint8_t button) {
 
 	case ME_GENERAL_JVJ:
 		modo_de_juego = 1;
+		set_cpu_player(0);
 
 		if (sub_estado == 0) {
 			msg = lcd_msg_clear();
@@ -427,9 +438,38 @@ static void ME_general(uint8_t button) {
 
 			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
+
+		if (button == 4) {
+			estado = ME_GENERAL_FIN;
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		}
 		break;
 	case ME_GENERAL_JVM:
+		set_cpu_player(1);
 		modo_de_juego = 2;
+
+		msg = lcd_msg_clear();
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+		msg = lcd_msg_first_line();
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+		msg = lcd_msg_from_string("Jug vs Maq");
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+		msg = lcd_msg_second_line();
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+		msg = lcd_msg_from_string("Btn Verde-Rst");
+		xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
+
+		if (button == 3) {
+			user_init();
+			estado = ME_GENERAL_RESET;
+
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		}
+
+		if (button == 4) {
+			estado = ME_GENERAL_FIN;
+			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
+		}
 		break;
 	case ME_GENERAL_FIN:
 		modo_de_juego = 3;
@@ -473,7 +513,7 @@ void t_WS2812(void*) {
 	}
 }
 
-void tareas_error_handler(uint8_t error) {
+void tareas_error_handler(void *error) {
 	__disable_irq();
 	while (1) {
 		UNUSED(error);

@@ -18,4 +18,6 @@ void t_WS2812(void*);
 
 void t_Timer();
 
+void tareas_error_handler(void *);
+
 #endif /* INC_TAREAS_H_ */

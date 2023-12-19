@@ -1,5 +1,5 @@
-../Core/Src/movement.c:13:16:get_last_sensor_change	6
-../Core/Src/movement.c:38:6:get_expected_sensor_state	1
-../Core/Src/movement.c:46:6:is_board_ok	7
-../Core/Src/movement.c:64:5:get_lifted_moves	3
-../Core/Src/movement.c:79:6:movement_fsm	16
+../Core/Src/movement.c:15:16:get_last_sensor_change	6
+../Core/Src/movement.c:40:6:get_expected_sensor_state	1
+../Core/Src/movement.c:48:6:is_board_ok	7
+../Core/Src/movement.c:66:5:get_lifted_moves	3
+../Core/Src/movement.c:87:6:movement_fsm	31

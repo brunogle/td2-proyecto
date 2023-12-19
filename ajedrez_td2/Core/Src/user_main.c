@@ -27,8 +27,10 @@ TIM_HandleTypeDef *user_htim1;
 extern xQueueHandle buttons_queue;
 extern xQueueHandle lcd_queue;
 
-extern game_state_t game_state;
+extern game_state_t engine_game_state;
 extern char lighting_state;
+
+extern color_t cpu_player;
 
 void user_init() {
 	//game_set_sensor_reader((sensor_reader_t) reed_scan_sensors);
@@ -36,11 +38,25 @@ void user_init() {
 	game_set_led_output_array(ws2812_color_data);
 
 	game_reset();
+
+	movement_state = WAIT_STATE;
 }
 
 uint8_t get_side_to_move()
 {
-	return (game_state.side_to_move == WHITE ? 0 : 1);
+	return (engine_game_state.side_to_move == WHITE ? 0 : 1);
+}
+
+extern char movement_state;
+
+uint8_t get_finished_state()
+{
+	return (movement_state == GAME_FINISHED_STATE ? 1 : 0);
+}
+
+void set_cpu_player(uint8_t on)
+{
+	cpu_player = on ? BLACK : COLOR_EMPTY;
 }
 
 uint8_t get_error_position()

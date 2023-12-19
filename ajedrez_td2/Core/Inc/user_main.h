@@ -22,6 +22,7 @@ piece_t get_promotion();
 void user_loop();
 uint8_t get_side_to_move();
 uint8_t get_error_position();
-
+void set_cpu_player(uint8_t on);
+uint8_t get_finished_state();
 
 #endif /* INC_USER_MAIN_H_ */
