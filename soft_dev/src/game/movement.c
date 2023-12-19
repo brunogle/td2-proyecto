@@ -136,7 +136,7 @@ void movement_fsm(){
                 else{
                     if(cpu_player == COLOR_EMPTY){
                         movement_state = WAIT_STATE;
-                        printf("Eval: %d\n", engine_negamax_seach(engine_game_state, 1, MIN_EVAL, MAX_EVAL));
+                        //printf("Eval: %d\n", engine_negamax_seach(engine_game_state, 1, MIN_EVAL, MAX_EVAL));
                         lighting_set_state(LIGHTING_IDLE_STATE);
                     }
                     else{
