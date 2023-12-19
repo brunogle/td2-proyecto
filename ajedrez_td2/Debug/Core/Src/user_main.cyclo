@@ -1,7 +1,7 @@
-../Core/Src/user_main.c:35:6:user_init	1
-../Core/Src/user_main.c:43:9:get_side_to_move	1
-../Core/Src/user_main.c:50:9:get_finished_state	1
-../Core/Src/user_main.c:55:6:set_cpu_player	2
-../Core/Src/user_main.c:60:9:get_error_position	1
-../Core/Src/user_main.c:65:9:get_promotion	12
-../Core/Src/user_main.c:139:6:user_loop	1
+../Core/Src/user_main.c:37:6:user_init	1
+../Core/Src/user_main.c:47:9:get_side_to_move	1
+../Core/Src/user_main.c:54:9:get_finished_state	1
+../Core/Src/user_main.c:59:6:set_cpu_player	2
+../Core/Src/user_main.c:64:9:get_error_position	1
+../Core/Src/user_main.c:69:9:get_promotion	12
+../Core/Src/user_main.c:143:6:user_loop	1

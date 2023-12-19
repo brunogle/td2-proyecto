@@ -32,6 +32,8 @@ extern char lighting_state;
 
 extern color_t cpu_player;
 
+extern char movement_state;
+
 void user_init() {
 	//game_set_sensor_reader((sensor_reader_t) reed_scan_sensors);
 
@@ -47,7 +49,7 @@ uint8_t get_side_to_move()
 	return (engine_game_state.side_to_move == WHITE ? 0 : 1);
 }
 
-extern char movement_state;
+
 
 uint8_t get_finished_state()
 {
