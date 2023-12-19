@@ -1,7 +1,7 @@
 ../Core/Src/tareas.c:40:6:t_Timer	16	static
-../Core/Src/tareas.c:63:6:t_LCD	40	static
-../Core/Src/tareas.c:91:6:t_Botones	48	static
-../Core/Src/tareas.c:135:6:t_userLoop	104	static
-../Core/Src/tareas.c:256:13:ME_general	80	static
-../Core/Src/tareas.c:498:6:t_WS2812	16	static
-../Core/Src/tareas.c:516:6:tareas_error_handler	16	static,ignoring_inline_asm
+../Core/Src/tareas.c:64:6:t_LCD	40	static
+../Core/Src/tareas.c:92:6:t_Botones	48	static
+../Core/Src/tareas.c:136:6:t_userLoop	104	static
+../Core/Src/tareas.c:257:13:ME_general	80	static
+../Core/Src/tareas.c:499:6:t_WS2812	16	static
+../Core/Src/tareas.c:517:6:tareas_error_handler	16	static,ignoring_inline_asm

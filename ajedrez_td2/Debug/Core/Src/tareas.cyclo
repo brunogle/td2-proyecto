@@ -1,7 +1,7 @@
-../Core/Src/tareas.c:40:6:t_Timer	6
-../Core/Src/tareas.c:63:6:t_LCD	6
-../Core/Src/tareas.c:91:6:t_Botones	8
-../Core/Src/tareas.c:135:6:t_userLoop	15
-../Core/Src/tareas.c:256:13:ME_general	38
-../Core/Src/tareas.c:498:6:t_WS2812	3
-../Core/Src/tareas.c:516:6:tareas_error_handler	1
+../Core/Src/tareas.c:40:6:t_Timer	7
+../Core/Src/tareas.c:64:6:t_LCD	6
+../Core/Src/tareas.c:92:6:t_Botones	8
+../Core/Src/tareas.c:136:6:t_userLoop	16
+../Core/Src/tareas.c:257:13:ME_general	38
+../Core/Src/tareas.c:499:6:t_WS2812	3
+../Core/Src/tareas.c:517:6:tareas_error_handler	1

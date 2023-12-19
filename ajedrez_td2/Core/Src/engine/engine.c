@@ -24,47 +24,46 @@ char engine_move_piece(move_t move){
     return make_move(&engine_game_state, move, 1);
 }
 
-move_t pseudo_legal_moves[255] = {0};
+move_t pseudo_legal_moves[255] = { 0 };
 
-int engine_list_moves(move_t moves[], char only_legal){
+int engine_list_moves(move_t moves[], char only_legal) {
 	only_legal = 1;
-    if(only_legal){
+	if (only_legal) {
 
-        game_state_t test_game_state = engine_game_state;
-        //game_state_t test_game_state;
-        //memcpy(&test_game_state, &engine_game_state, sizeof(game_state_t));
+		game_state_t test_game_state = engine_game_state;
+		//game_state_t test_game_state;
+		//memcpy(&test_game_state, &engine_game_state, sizeof(game_state_t));
 
-        int num_pseudo_legal = generate_moves(&engine_game_state, pseudo_legal_moves);
+		int num_pseudo_legal = generate_moves(&engine_game_state,
+				pseudo_legal_moves);
 
+		int num_legal = 0;
+		for (int i = 0; i < num_pseudo_legal; i++) {
 
+			memcpy(&test_game_state, &engine_game_state, sizeof(game_state_t));
+			make_move(&test_game_state, pseudo_legal_moves[i], 0);
+			uint8_t king_pos = 0;
+			while (!(test_game_state.pieces[king_pos] == KING
+					&& test_game_state.color[king_pos]
+							== engine_game_state.side_to_move)) {
+				king_pos++;
+			}
+			if (!is_attacked(&test_game_state, test_game_state.side_to_move,
+					king_pos)) {
+				moves[num_legal] = pseudo_legal_moves[i];
+				num_legal++;
+			}
 
-
-        int num_legal = 0;
-        for(int i = 0; i < num_pseudo_legal; i++){
-
-        	memcpy(&test_game_state, &engine_game_state, sizeof(game_state_t));
-            make_move(&test_game_state, pseudo_legal_moves[i], 0);
-            uint8_t king_pos = 0;
-            while(!(test_game_state.pieces[king_pos] == KING && test_game_state.color[king_pos] == engine_game_state.side_to_move)){
-                king_pos++;
-            }
-            if(!is_attacked(&test_game_state, test_game_state.side_to_move, king_pos)){
-                moves[num_legal] = pseudo_legal_moves[i];
-                num_legal++;
-            }
-
-        }
-        return num_legal;
-    }
-    else{
-        return generate_moves(&engine_game_state, moves);
-    }
+		}
+		return num_legal;
+	} else {
+		return generate_moves(&engine_game_state, moves);
+	}
 }
 
-char engine_get_piece(uint8_t square){
-    return engine_game_state.pieces[square];
+char engine_get_piece(uint8_t square) {
+	return engine_game_state.pieces[square];
 }
-
 int engine_eval(game_state_t * game_state){
 
     //
@@ -93,103 +92,166 @@ int engine_eval(game_state_t * game_state){
         return -score;
 }
 
+int engine_pv_search(int alpha, int beta, int depth) {
 
-int engine_pv_search(int alpha, int beta, int depth){
+	if (depth == 0) {
+		return 0;
+	}
+
+	return 0;
+
+}
+
+#define SEARCH_DEPTH 5
+#define MAX_POSSIBLE_MOVEMENTS 100
+int x = 0;
+
+
+int searching_depth;
+
+move_t pv_table[SEARCH_DEPTH][SEARCH_DEPTH];
+
+
+void update_pv_table(move_t new_best_move, int ply, char is_leaf_node){
+
+    pv_table[ply][ply] = new_best_move;
+    if(is_leaf_node){//If node analyzed is a terminal node
+        pv_table[ply][ply + 1].from = -1; //If move bitarray is set to -1, this is a terminal node used ony for killer moves.
+    }
+    else{
+        for(int j = ply + 1; j < searching_depth; j++){
+            pv_table[ply][j] = pv_table[ply+1][j];
+        }
+    }
+}
+
+
+int negamax(game_state_t prev_node_state, int alpha, int beta, int depth) {
+    x++;
+
+    //Leaf node conditions
 
     if(depth == 0){
-        return 0;
+        return engine_eval(&prev_node_state);
     }
 
-    return 0;
 
-}
+    int ply = searching_depth - depth;
 
-#define SEARCH_DEPTH 3
-/*
-move_t moves_calc[SEARCH_DEPTH][100];
+    int win_score = MIN_EVAL + ply; //Further into the tree, the lower the win_score is
 
-game_state_t test_game_state[SEARCH_DEPTH];
+    //If window is an infinite window, limit the values to win score
+    if (alpha < win_score) alpha = win_score;
+    if (beta > -win_score - 1) beta = -win_score - 1;
+    if (alpha >= beta){
+        return alpha;
+    }
 
-int engine_negamax_seach(game_state_t * game_state, int depth, int alpha, int beta){
-    if(depth == 0)
-        return engine_eval(game_state);
-
-    int num_moves = engine_list_moves(moves_calc[depth], 1);
+    //Generate moves
+    move_t possible_moves[MAX_POSSIBLE_MOVEMENTS];
+    int num_moves = engine_list_moves(possible_moves, 1);
 
     if(num_moves == 0){
         return MIN_EVAL;
     }
 
-    //Idealmente ordenar moviminetos
-    int score = MIN_EVAL;
+
+
     for(int i = 0; i < num_moves; i++){
-        move_t test_move = moves_calc[depth][i];
-        test_game_state[depth] = *game_state;
-        make_move(&test_game_state[depth], test_move, 0);
-        score = -engine_negamax_seach(&test_game_state[depth], depth - 1, -beta, -alpha);
-        if(score >= beta)
-        	return beta;
-        if(score > alpha)
+        game_state_t node_state = prev_node_state;
+        make_move(&node_state, possible_moves[i], 1);
+
+        int score = -negamax(node_state, -beta, -alpha, depth - 1);
+
+        //Update alpha (better child node has been found)
+        if(score > alpha){
             alpha = score;
+
+            update_pv_table(possible_moves[i], ply, score == MAX_EVAL);
+
+            if(score >= beta){
+                //If condition is met, this node is garanteed to have a score smaller than
+                //another previously searched sibling node
+
+                return beta;
+            }
+        }
     }
     return alpha;
+
 }
 
-*/
+int root_search(game_state_t prev_node_state, int depth) {
 
-move_t search_valid_moves[255];
-int engine_negamax_seach2(game_state_t game_state, int depth, int alpha, int beta){
+    //Leaf node conditions
 
-	move_t moves_calc[100];
+    int ply = 0;
+    int alpha = MIN_EVAL;
+    int beta = MAX_EVAL;
 
-	game_state_t test_game_state;
+    int win_score = MAX_EVAL - ply; //Further into the tree, the lower the win_score is
 
-    if(depth == 0)
-        return engine_eval(&game_state);
 
-    int num_moves = engine_list_moves(moves_calc, 1);
+    //Generate moves
+    move_t possible_moves[MAX_POSSIBLE_MOVEMENTS];
+    int num_moves = engine_list_moves(possible_moves, 1);
 
-    if(num_moves == 0){
-        return MIN_EVAL;
-    }
-
-    //Idealmente ordenar moviminetos
-    int score = MIN_EVAL;
     for(int i = 0; i < num_moves; i++){
-        move_t test_move = moves_calc[i];
-        test_game_state = game_state;
-        make_move(&test_game_state, test_move, 0);
-        score = -engine_negamax_seach2(test_game_state, depth - 1, -beta, -alpha);
-        if(score >= beta)
-        	return beta;
-        if(score > alpha)
+        game_state_t node_state = prev_node_state;
+        make_move(&node_state, possible_moves[i], 1);
+
+        int score = -negamax(node_state, -beta, -alpha, depth - 1);
+
+        //Beta cut-off
+
+
+        //Update alpha (better child node has been found)
+        if(score > alpha){
             alpha = score;
+
+            update_pv_table(possible_moves[i], ply, score == MAX_EVAL);
+
+            if(score >= beta){
+                //If condition is met, this node is garanteed to have a score smaller than
+                //another previously searched sibling node
+
+                return beta;
+            }
+        }
     }
     return alpha;
+
 }
-
-
 
 move_t engine_search(){
-    //Placeholder for actual search
-    int num_moves = generate_moves(&engine_game_state, search_valid_moves);
 
-    move_t best_move;
-    int best_score = MIN_EVAL;
+    game_state_t state = engine_game_state;
 
-    game_state_t test_game_state;
+    x = 0;
+    move_t possible_moves[MAX_POSSIBLE_MOVEMENTS];
 
-    for(int i = 0; i < num_moves; i++){
-        move_t test_move = search_valid_moves[i];
-        test_game_state = engine_game_state;
-        make_move(&test_game_state, test_move, 0);
-        int score = -engine_negamax_seach2(test_game_state, SEARCH_DEPTH - 1, MIN_EVAL, MAX_EVAL);
-        if(score > best_score){
-            best_score = score;
-            best_move = search_valid_moves[i];
+
+    int score;
+
+    for(int i = 0; i < SEARCH_DEPTH; i++){
+        for(int j = 0; j < SEARCH_DEPTH; j++){
+            pv_table[i][j].to = -1;
         }
     }
 
+    for(int depth = 2; depth <= SEARCH_DEPTH; depth++){
+        //std::cout << "searching depth " << depth << std::endl;
+        searching_depth = depth;
+        score =  root_search(state, depth);
+        if(abs(score) > MAX_EVAL - 100){
+            break;
+        }
+    }
+
+
+    move_t best_move = pv_table[0][0];
+
+    //std::cout << "pv: ";
     return best_move;
 
 }

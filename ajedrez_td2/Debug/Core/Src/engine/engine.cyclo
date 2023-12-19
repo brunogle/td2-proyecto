@@ -2,7 +2,9 @@
 ../Core/Src/engine/engine.c:23:6:engine_move_piece	1
 ../Core/Src/engine/engine.c:29:5:engine_list_moves	6
 ../Core/Src/engine/engine.c:64:6:engine_get_piece	1
-../Core/Src/engine/engine.c:68:5:engine_eval	6
-../Core/Src/engine/engine.c:97:5:engine_pv_search	2
-../Core/Src/engine/engine.c:141:5:engine_negamax_seach2	6
-../Core/Src/engine/engine.c:173:8:engine_search	3
+../Core/Src/engine/engine.c:67:5:engine_eval	6
+../Core/Src/engine/engine.c:95:5:engine_pv_search	2
+../Core/Src/engine/engine.c:115:6:update_pv_table	3
+../Core/Src/engine/engine.c:129:5:negamax	9
+../Core/Src/engine/engine.c:184:5:root_search	4
+../Core/Src/engine/engine.c:226:8:engine_search	5

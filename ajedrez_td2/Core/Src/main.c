@@ -170,7 +170,7 @@ int main(void)
 	NULL);
 
 	xTaskCreate(t_userLoop, "t_userLoop",
-	configMINIMAL_STACK_SIZE*8,
+	configMINIMAL_STACK_SIZE*16,
 	NULL,
 	tskIDLE_PRIORITY + 1,
 	NULL);

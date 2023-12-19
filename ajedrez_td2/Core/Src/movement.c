@@ -173,7 +173,7 @@ void movement_fsm(){
                     captured_piece_is_valid = 1;
                     lighting_piece_lifted_square(piece_change.square_affected);
                     lighting_set_state(LIGHTING_CAPTURE_STATE); 
-                    engine_move_piece(valid_moves[i]);
+                    //engine_move_piece(valid_moves[i]);
                     capturing = 1;
                     break;
                 }

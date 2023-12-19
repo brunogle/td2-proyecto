@@ -35,7 +35,7 @@ ME_general_estados estado = ME_GENERAL_RESET;
 uint8_t modo_de_juego = 0, mostrar_tiempo = 0, contar = 0, actualizar_display =
 		0;
 
-uint32_t segundos_j1 = 0, segundos_j2 = 0, incremento = 0;
+uint32_t segundos_j1 = 0, segundos_j2 = 0, incremento = 0, delay = 0;
 
 void t_Timer() {
 	TickType_t xLastWakeTime;
@@ -53,7 +53,8 @@ void t_Timer() {
 			}
 
 		}
-
+		if(delay > 0)
+			delay--;
 		actualizar_display = 1;
 
 		vTaskDelayUntil(&xLastWakeTime, xPeriod);
@@ -186,7 +187,7 @@ void t_userLoop(void*) {
 			}
 
 			//Imprimo tiempos si tengo que hacerlo
-			if (actualizar_display && mostrar_tiempo) {
+			if (actualizar_display && mostrar_tiempo && delay == 0) {
 				actualizar_display = 0;
 				msg = lcd_msg_first_line();
 				xQueueSend(lcd_queue, (void* )&msg, portMAX_DELAY);
@@ -435,7 +436,7 @@ static void ME_general(uint8_t button) {
 			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		} else if (button != 0) {
 			sub_estado = !sub_estado;
-
+			delay = 5;
 			xQueueSend(buttons_queue, &aux_button, 0); // Actualizo ME
 		}
 
