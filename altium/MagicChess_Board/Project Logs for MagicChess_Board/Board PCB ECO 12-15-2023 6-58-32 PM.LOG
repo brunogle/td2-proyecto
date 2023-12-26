@@ -1,0 +1,54 @@
+Change Component Footprint: Designator=P2 Old Footprint=61300411021 New Footprint=61300411021
+Change Component Footprint: Designator=P5 Old Footprint=61300411021 New Footprint=61300411021
+Change Component Footprint: Designator=P3 Old Footprint=61300811021 New Footprint=61300811021
+Change Component Footprint: Designator=P4 Old Footprint=61300811021 New Footprint=61300811021
+Change Component Footprint: Designator=P1 Old Footprint=61900311021 New Footprint=61900311021
+Change Component Footprint: Designator=J1 Old Footprint=694106301002 New Footprint=694106301002
+Added Pin To Net: NetName=SENS_1 Pin=P3-1
+Added Pin To Net: NetName=SENS_1 Pin=U1-CN7_38
+Added Net: Name=SENS_1
+Added Pin To Net: NetName=SENS_2 Pin=P3-2
+Added Pin To Net: NetName=SENS_2 Pin=U1-CN7_36
+Added Net: Name=SENS_2
+Added Pin To Net: NetName=SENS_3 Pin=P3-3
+Added Pin To Net: NetName=SENS_3 Pin=U1-CN7_34
+Added Net: Name=SENS_3
+Added Pin To Net: NetName=SENS_4 Pin=P3-4
+Added Pin To Net: NetName=SENS_4 Pin=U1-CN10_13
+Added Net: Name=SENS_4
+Added Pin To Net: NetName=SENS_5 Pin=P3-5
+Added Pin To Net: NetName=SENS_5 Pin=U1-CN10_15
+Added Net: Name=SENS_5
+Added Pin To Net: NetName=SENS_6 Pin=P3-6
+Added Pin To Net: NetName=SENS_6 Pin=U1-CN10_17
+Added Net: Name=SENS_6
+Added Pin To Net: NetName=SENS_7 Pin=P3-7
+Added Pin To Net: NetName=SENS_7 Pin=U1-CN10_19
+Added Net: Name=SENS_7
+Added Pin To Net: NetName=SENS_8 Pin=P3-8
+Added Pin To Net: NetName=SENS_8 Pin=U1-CN10_21
+Added Net: Name=SENS_8
+Added Pin To Net: NetName=SENS_A Pin=P4-1
+Added Pin To Net: NetName=SENS_A Pin=U1-CN10_23
+Added Net: Name=SENS_A
+Added Pin To Net: NetName=SENS_B Pin=P4-2
+Added Pin To Net: NetName=SENS_B Pin=U1-CN10_25
+Added Net: Name=SENS_B
+Added Pin To Net: NetName=SENS_C Pin=P4-3
+Added Pin To Net: NetName=SENS_C Pin=U1-CN10_27
+Added Net: Name=SENS_C
+Added Pin To Net: NetName=SENS_D Pin=P4-4
+Added Pin To Net: NetName=SENS_D Pin=U1-CN10_34
+Added Net: Name=SENS_D
+Added Pin To Net: NetName=SENS_E Pin=P4-5
+Added Pin To Net: NetName=SENS_E Pin=U1-CN10_29
+Added Net: Name=SENS_E
+Added Pin To Net: NetName=SENS_F Pin=P4-6
+Added Pin To Net: NetName=SENS_F Pin=U1-CN10_33
+Added Net: Name=SENS_F
+Added Pin To Net: NetName=SENS_G Pin=P4-7
+Added Pin To Net: NetName=SENS_G Pin=U1-CN10_28
+Added Net: Name=SENS_G
+Added Pin To Net: NetName=SENS_H Pin=P4-8
+Added Pin To Net: NetName=SENS_H Pin=U1-CN10_30
+Added Net: Name=SENS_H

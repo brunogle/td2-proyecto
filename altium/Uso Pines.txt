@@ -1,0 +1,4 @@
+16 pines digitales in/out (pullup) : Matriz de sensores
+1 pin digital rapido (PWM)   : Cadena neopixels
+2 pines (I2C) : LCD
+5 pines digitalen in (pullup) : botones
